@@ -15,11 +15,12 @@ export default class TilePalette extends Component {
 
         let tileImagePath = require(tiles[tileKey]);
         let selected = tileKey == selectedTile;
+        let paletteClass = selected ? styles.selectedPalette : styles.palette
 
         palettes.push(
           <div
             key={tiles[tileKey]}
-            className={selected ? styles.selectedPalette : styles.palette}
+            className={paletteClass}
             style={{
               backgroundImage: `url(${tileImagePath})`
             }}

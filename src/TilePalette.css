@@ -25,3 +25,8 @@
   transform: scale(1.1, 1.1);
   opacity: 1;
 }
+
+.palette:hover {
+  transform: scale(1.1, 1.1);
+  opacity: 1;
+}
