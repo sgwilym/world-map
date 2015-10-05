@@ -1,0 +1,25 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  padding: .5em;
+  background-color: rgb(241, 241, 241);
+  overflow: auto;
+  flex: 0 0 auto;
+}
+
+.palette {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  margin: 0 0 .5em 0;
+  flex: 0 0 auto;
+  background-size: cover;
+  transition: all 50ms;
+  opacity: 0.8;
+}
+
+.selectedPalette {
+  composes: palette;
+  transform: scale(1.1, 1.1);
+  opacity: 1;
+}

@@ -1,0 +1,12 @@
+.root {
+  background: rgb(221, 221, 221);
+  position: absolute;
+  right: 0; top: 0;
+  padding: .5em;
+}
+
+.slider {
+  width: 2em;
+  -webkit-appearance: slider-vertical;
+  writing-mode: bt-lr;
+}

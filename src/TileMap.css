@@ -1,0 +1,39 @@
+.map {
+  border-spacing: 0;
+}
+
+.root {
+  padding: 2em;
+}
+
+.table, .table tr, .table td {
+  margin: 0;
+  border-spacing: 0;
+  padding: 0;
+}
+
+.cell {
+  transition: background 100ms;
+  cursor: crosshair;
+  background-size: cover;
+  image-rendering: pixelated;
+}
+
+.addButton {
+  color: rgb(32, 167, 99);
+  background-color: rgb(164, 233, 198);
+  font-size: 2em;
+  border: none;
+  width: 100%;
+  min-width: 50px;
+  height: 100%;
+  min-height: 50px;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+.addButton:focus {
+  outline: 0;
+}
