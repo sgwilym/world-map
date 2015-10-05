@@ -32,6 +32,11 @@
   margin: 0;
   cursor: pointer;
   user-select: none;
+  transition: all 100ms;
+}
+
+.addButton:hover {
+  background-color: rgb(115, 222, 168);
 }
 
 .addButton:focus {

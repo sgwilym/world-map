@@ -1,6 +1,7 @@
 export const ADD_COLUMN = 'ADD_COLUMN';
 export const ADD_ROW = 'ADD_ROW';
 export const CHANGE_CELL = 'CHANGE_CELL';
+export const LOAD_WORLD = 'LOAD_WORLD';
 
 export const SELECT_TILE = 'SELECT_TILE';
 
@@ -16,6 +17,10 @@ export function addRow(append) {
 
 export function changeCell(twoDimensionalIndex, tileId) {
   return { type: CHANGE_CELL, twoDimensionalIndex, tileId };
+}
+
+export function loadWorld(loadedWorld) {
+  return { type: LOAD_WORLD, loadedWorld };
 }
 
 export function selectTile(tileId) {

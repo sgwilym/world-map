@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import update from 'react-addons-update';
-import { ADD_ROW, ADD_COLUMN, CHANGE_CELL, SELECT_TILE, CHANGE_TILE_SIZE } from './actions';
+import { ADD_ROW, ADD_COLUMN, CHANGE_CELL, LOAD_WORLD, SELECT_TILE, CHANGE_TILE_SIZE } from './actions';
 
 function world(state = [], action) {
   switch (action.type) {
@@ -35,6 +35,8 @@ function world(state = [], action) {
         return newRow;
       })
     }
+  case LOAD_WORLD:
+    return action.loadedWorld;
   case CHANGE_CELL:
     // Change the cell at the two dimensional index in world’s id to the given TileId
 

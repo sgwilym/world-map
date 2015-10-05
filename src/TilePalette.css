@@ -4,7 +4,9 @@
   padding: .5em;
   background-color: rgb(241, 241, 241);
   overflow: auto;
-  flex: 0 0 auto;
+  height: 50%;
+  flex: 1 1 auto;
+
 }
 
 .palette {

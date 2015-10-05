@@ -30,7 +30,7 @@ let initialState = {
     17: './tiles/17.png',
     18: './tiles/18.png',
   },
-  tileSize: 100,
+  tileSize: 50,
   world: [
     [0, 0, 0, 0, 0],
     [0, 4, 4, 4, 0],

@@ -1,0 +1,30 @@
+.root {
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  color: rgb(0, 0, 0);
+  padding: .5em;
+  font-size: 1em;
+  text-decoration: none;
+  font-family: monospace;
+  background-color: rgb(166, 237, 203);
+  text-align: center;
+  border: none;
+  margin: 0 0 .5em 0;
+  transition: all 100ms;
+}
+
+.button:hover {
+  transform: scale(1.1, 1.1);
+  transform-origin: left;
+}
+
+.button:focus {
+  outline: 0;
+}
+
+.fileInput {
+  display: none;
+}

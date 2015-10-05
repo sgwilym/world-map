@@ -1,24 +1,34 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { addRow, addColumn, changeCell, selectTile, changeTileSize } from './actions';
+import { addRow, addColumn, changeCell, loadWorld, selectTile, changeTileSize } from './actions';
 import TilePalette from './TilePalette';
 import MapViewer from './MapViewer';
+import DataControl from './DataControl';
 
 import styles from './App.css';
 
 class App extends Component {
   render() {
-    const { dispatch, tiles, selectedTile } = this.props;
+    const { dispatch, tiles, selectedTile, world } = this.props;
     return (
       <div className={styles.root}>
-        <TilePalette
-          tiles={tiles}
-          selectedTile={selectedTile}
-          selectTile={(tile) => {
-            dispatch(selectTile(tile))
-          }}
-        />
+        <div className={styles.controls}>
+          <DataControl
+            worldData={world}
+            loadWorld={(loadedWorld) => {
+              dispatch(loadWorld(loadedWorld))
+            }}
+          />
+          <TilePalette
+            tiles={tiles}
+            selectedTile={selectedTile}
+            selectTile={(tile) => {
+              dispatch(selectTile(tile))
+            }}
+          />
+        </div>
+
         <MapViewer
           changeTileSize={(tileSize) => {
             dispatch(changeTileSize(tileSize))
