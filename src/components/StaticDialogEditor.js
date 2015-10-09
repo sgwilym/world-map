@@ -13,13 +13,13 @@ export default class StaticDialogEditor extends Component {
   }
 
   handleConnectionSelection(e) {
-    const { connectSceneSubsceneDialog } = this.props;
-    connectSceneSubsceneDialog(e.target.value);
+    const { connectScene } = this.props;
+    connectScene(e.target.value);
   }
 
   render() {
 
-    const { dialogLines, subsceneID, sceneSubsceneIDs, connectsTo, addLineToSceneSubsceneDialog, editLineForSceneSubsceneDialog, deleteLineForSceneSubsceneDialog } = this.props;
+    const { dialogLines, subsceneID, sceneSubsceneIDs, connectsTo, addLine, editLine, deleteLine } = this.props;
 
     const makeLineEditors = (line, i) => {
       return (
@@ -29,12 +29,12 @@ export default class StaticDialogEditor extends Component {
           <input
             key={i}
             onChange={(e) => {
-              editLineForSceneSubsceneDialog(i, e.target.value);
+              editLine(i, e.target.value);
             }}
             value={line}
           />
           <button
-            onClick={deleteLineForSceneSubsceneDialog.bind(this, i)}
+            onClick={deleteLine.bind(this, i)}
           >
            Delete
           </button>
@@ -72,7 +72,7 @@ export default class StaticDialogEditor extends Component {
           { dialogLines.map(makeLineEditors) }
           <button
             className={styles.addlineButton}
-            onClick={addLineToSceneSubsceneDialog}
+            onClick={addLine}
           >Add new line</button>
         </div>
 

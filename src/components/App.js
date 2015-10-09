@@ -107,7 +107,7 @@ class App extends Component {
               dispatch(changeSceneEntrySubscene(sceneID, subsceneID));
             }}
 
-            changeViewpointDisplaySettings={(previousSeenSceneIDorConstant, seenSceneIDOrConstant, sceneToDisplayID) => {
+            changeDisplaySettings={(previousSeenSceneIDorConstant, seenSceneIDOrConstant, sceneToDisplayID) => {
               dispatch(changeViewpointDisplaySettings(editingViewpoint, previousSeenSceneIDorConstant, seenSceneIDOrConstant, sceneToDisplayID));
             }}
 

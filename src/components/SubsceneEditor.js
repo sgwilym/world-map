@@ -16,13 +16,13 @@ export default class SubsceneEditor extends Component {
   }
 
   handleDialogTypeChoice(e) {
-    const { changeSceneSubsceneDialogType } = this.props;
-    changeSceneSubsceneDialogType(e.target.value);
+    const { changeDialogType } = this.props;
+    changeDialogType(e.target.value);
   }
 
   render() {
 
-    const { subscene, sceneSubsceneIDs, changeSceneSubsceneImage, connectSceneSubsceneDialog, addLineToSceneSubsceneDialog, editLineForSceneSubsceneDialog, deleteLineForSceneSubsceneDialog, addSceneSubsceneDialogChoice, editSceneSubsceneDialogChoiceText, connectSceneSubsceneDialogChoice, deleteSceneSubsceneDialogChoice, removeSelf } = this.props;
+    const { subscene, sceneSubsceneIDs, changeImage, connectDialog, addLineToDialog, editLineForDialog, deleteLineForDialog, addDialogChoice, editDialogChoiceText, connectDialogChoice, deleteDialogChoice, removeSelf } = this.props;
 
     var dialogEditor;
     switch (subscene.dialog.type) {
@@ -30,22 +30,22 @@ export default class SubsceneEditor extends Component {
         dialogEditor = <StaticDialogEditor
           subsceneID={subscene.id}
           connectsTo={subscene.dialog.elements.connectsTo}
-          addLineToSceneSubsceneDialog={addLineToSceneSubsceneDialog}
-          editLineForSceneSubsceneDialog={editLineForSceneSubsceneDialog}
-          deleteLineForSceneSubsceneDialog={deleteLineForSceneSubsceneDialog}
+          addLine={addLineToDialog}
+          editLine={editLineForDialog}
+          deleteLine={deleteLineForDialog}
           sceneSubsceneIDs={sceneSubsceneIDs}
           dialogLines={subscene.dialog.elements.lines}
-          connectSceneSubsceneDialog={connectSceneSubsceneDialog}
+          connectScene={connectDialog}
         />;
         break;
       case INTERACTIVE_DIALOG:
         dialogEditor = <InteractiveDialogEditor
           subsceneID={subscene.id}
           sceneSubsceneIDs={sceneSubsceneIDs}
-          addChoice={addSceneSubsceneDialogChoice}
-          editChoiceText={editSceneSubsceneDialogChoiceText}
-          connectChoice={connectSceneSubsceneDialogChoice}
-          deleteChoice={deleteSceneSubsceneDialogChoice}
+          addChoice={addDialogChoice}
+          editChoiceText={editDialogChoiceText}
+          connectChoice={connectDialogChoice}
+          deleteChoice={deleteDialogChoice}
           choices={subscene.dialog.elements.choices}
         />;
         break;
@@ -57,7 +57,7 @@ export default class SubsceneEditor extends Component {
       <div className={styles.root}>
         <SubsceneImagePicker
           subsceneImage={subscene.image}
-          changeSceneSubsceneImage={changeSceneSubsceneImage}
+          changeImage={changeImage}
         />
         <div className={styles.dialogChoice}>
           <input

@@ -118,7 +118,6 @@ export default function(sceneState) {
     },
 
     connectSceneSubsceneDialog(sceneID, subsceneID, subsceneIDorConstant) {
-      console.log('…');
       return update(sceneState, {
         [sceneID]: {
           subscenes: {

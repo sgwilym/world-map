@@ -21,9 +21,9 @@ export default class SubsceneImagePicker extends Component {
   };
 
   pickImage(imageIndex) {
-    const { changeSceneSubsceneImage } = this.props;
+    const { changeImage } = this.props;
     this.setState({picking: false});
-    changeSceneSubsceneImage(imageIndex);
+    changeImage(imageIndex);
   }
 
   render() {

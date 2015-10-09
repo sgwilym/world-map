@@ -43,7 +43,7 @@ export default class SceneEditor extends Component {
   }
 
   render() {
-    const { scene, addNewSubsceneToScene, changeSceneSubsceneDialogType, changeSceneSubsceneImage, connectSceneSubsceneDialog, addLineToSceneSubsceneDialog, editLineForSceneSubsceneDialog, deleteLineForSceneSubsceneDialog, addSceneSubsceneDialogChoice, editSceneSubsceneDialogChoiceText, connectSceneSubsceneDialogChoice, deleteSceneSubsceneDialogChoice, removeSubscene, changeEntrySubscene } = this.props;
+    const { scene, addNewSubscene, changeSubsceneDialogType, changeSubsceneImage, connectSubsceneDialog, addLineToSubsceneDialog, editLineForSubsceneDialog, deleteLineForSubsceneDialog, addSubsceneDialogChoice, editSubsceneDialogChoiceText, connectSubsceneDialogChoice, deleteSubsceneDialogChoice, removeSubscene, changeEntrySubscene } = this.props;
     const { editingSubscene } = this.state;
 
     const subsceneButtons = [];
@@ -110,7 +110,7 @@ export default class SceneEditor extends Component {
           { subsceneButtons }
           <button
             className={styles.addSubsceneButton}
-            onClick={addNewSubsceneToScene}
+            onClick={addNewSubscene}
           >
             Add subscene
           </button>
@@ -122,44 +122,44 @@ export default class SceneEditor extends Component {
 
             sceneSubsceneIDs={sceneSubsceneIDs}
 
-            changeSceneSubsceneDialogType={(dialogType) => {
-              changeSceneSubsceneDialogType(editingSubscene, dialogType);
+            changeDialogType={(dialogType) => {
+              changeSubsceneDialogType(editingSubscene, dialogType);
             }}
 
-            changeSceneSubsceneImage={(imageIndex) => {
-              changeSceneSubsceneImage(editingSubscene, imageIndex);
+            changeImage={(imageIndex) => {
+              changeSubsceneImage(editingSubscene, imageIndex);
             }}
 
-            connectSceneSubsceneDialog={(subsceneIDorConstant) => {
-              connectSceneSubsceneDialog(editingSubscene, subsceneIDorConstant);
+            connectDialog={(subsceneIDorConstant) => {
+              connectSubsceneDialog(editingSubscene, subsceneIDorConstant);
             }}
 
-            addLineToSceneSubsceneDialog={() => {
-              addLineToSceneSubsceneDialog(editingSubscene);
+            addLineToDialog={() => {
+              addLineToSubsceneDialog(editingSubscene);
             }}
 
-            editLineForSceneSubsceneDialog={(lineIndex, lineString) => {
-              editLineForSceneSubsceneDialog(editingSubscene, lineIndex, lineString);
+            editLineForDialog={(lineIndex, lineString) => {
+              editLineForSubsceneDialog(editingSubscene, lineIndex, lineString);
             }}
 
-            deleteLineForSceneSubsceneDialog={(lineIndex) => {
-              deleteLineForSceneSubsceneDialog(editingSubscene, lineIndex);
+            deleteLineForDialog={(lineIndex) => {
+              deleteLineForSubsceneDialog(editingSubscene, lineIndex);
             }}
 
-            addSceneSubsceneDialogChoice={() => {
-              addSceneSubsceneDialogChoice(editingSubscene);
+            addDialogChoice={() => {
+              addSubsceneDialogChoice(editingSubscene);
             }}
 
-            editSceneSubsceneDialogChoiceText={(choiceIndex, choiceString) => {
-              editSceneSubsceneDialogChoiceText(editingSubscene, choiceIndex, choiceString);
+            editDialogChoiceText={(choiceIndex, choiceString) => {
+              editSubsceneDialogChoiceText(editingSubscene, choiceIndex, choiceString);
             }}
 
-            deleteSceneSubsceneDialogChoice={(choiceIndex) => {
-              deleteSceneSubsceneDialogChoice(editingSubscene, choiceIndex);
+            deleteDialogChoice={(choiceIndex) => {
+              deleteSubsceneDialogChoice(editingSubscene, choiceIndex);
             }}
 
-            connectSceneSubsceneDialogChoice={(choiceIndex, subsceneIDorConstant) => {
-              connectSceneSubsceneDialogChoice(editingSubscene, choiceIndex, subsceneIDorConstant);
+            connectDialogChoice={(choiceIndex, subsceneIDorConstant) => {
+              connectSubsceneDialogChoice(editingSubscene, choiceIndex, subsceneIDorConstant);
             }}
 
             removeSelf={() => {
