@@ -4,6 +4,7 @@ export const ADD_ROW = 'ADD_ROW';
 export const DELETE_COLUMN = 'DELETE_COLUMN';
 export const DELETE_ROW = 'DELETE_ROW';
 export const CHANGE_CELL = 'CHANGE_CELL';
+export const FILL_WORLD = 'FILL_WORLD';
 export const LOAD_WORLD = 'LOAD_WORLD';
 
 // World actions
@@ -25,6 +26,10 @@ export function deleteRow(pop) {
 
 export function changeCell(twoDimensionalIndex, tileId) {
   return { type: CHANGE_CELL, twoDimensionalIndex, tileId };
+}
+
+export function fillWorld(tileID) {
+  return { type: FILL_WORLD, tileID };
 }
 
 export function loadWorld(loadedWorld) {

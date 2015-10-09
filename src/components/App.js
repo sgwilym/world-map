@@ -3,7 +3,7 @@ import createFragment from 'react-addons-create-fragment';
 import { connect } from 'react-redux';
 
 import { selectTile, changeTileSize, openViewpointEditor, closeViewpointEditor} from '../actions/interface';
-import { addColumn, addRow, deleteColumn, deleteRow, changeCell, loadWorld } from '../actions/world';
+import { addColumn, addRow, deleteColumn, deleteRow, changeCell, loadWorld, fillWorld } from '../actions/world';
 import { createViewpoint, connectSceneToViewpoint, setSceneToDisplayOnViewpoint, removeSceneToDisplayOnViewpoint, deleteViewpoint, loadViewpoints } from '../actions/viewpoints';
 import { createScene, renameScene, deleteScene, addNewSubsceneToScene, changeSceneEntrySubscene, removeSubsceneFromScene, changeSceneSubsceneImage, changeSceneSubsceneDialogType, connectSceneSubsceneDialog, addLineToSceneSubsceneDialog, editLineForSceneSubsceneDialog, deleteLineForSceneSubsceneDialog, addSceneSubsceneDialogChoice, editSceneSubsceneDialogChoiceText, connectSceneSubsceneDialogChoice, deleteSceneSubsceneDialogChoice } from '../actions/scenes';
 import { createSceneAndConnectToViewpoint, deleteSceneAndDisconnectFromViewpoint, deleteViewpointAndCloseViewpointEditor, changeViewpointDisplaySettings, loadAppData } from '../actions/multiple';
@@ -154,6 +154,9 @@ class App extends Component {
               }}
               deleteColumn={(pop) => {
                 dispatch(deleteColumn(pop));
+              }}
+              clearWorld={() => {
+                dispatch(fillWorld(Object.keys(tiles)[0]));
               }}
               createViewpoint={(location) => {
                 dispatch(createViewpoint(location));

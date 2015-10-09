@@ -47,7 +47,7 @@ export default function world(state = [], action) {
       });
     }
   case ActionTypes.DELETE_ROW:
-    let nextState = state.slice();
+    const nextState = state.slice();
     if (action.pop) {
       nextState.pop();
       return nextState;
@@ -55,6 +55,12 @@ export default function world(state = [], action) {
       nextState.shift();
       return nextState;
     }
+  case ActionTypes.FILL_WORLD:
+    return state.map((row) => {
+      return row.map((cell) => {
+        return action.tileID;
+      });
+    });
   case ActionTypes.LOAD_WORLD:
     return action.loadedWorld;
   case ActionTypes.CHANGE_CELL:

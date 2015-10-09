@@ -33,7 +33,7 @@
   background-color: rgb(115, 222, 168);
 }
 
-.addButton:focus {
+.addButton:focus, .clearButton:focus {
   outline: 0;
 }
 
@@ -43,7 +43,16 @@
   background: rgb(242, 80, 58);
 }
 
-.deleteButton:hover {
+.deleteButton:hover, .clearButton:hover {
   color: white;
   background: rgb(242, 80, 58);
+}
+
+.clearButton {
+  background: rgb(181, 181, 181);
+  border: none;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  cursor: pointer;
 }

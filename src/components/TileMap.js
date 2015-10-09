@@ -44,7 +44,7 @@ export default class TileMap extends Component {
 
   render() {
 
-    const { world, tiles, tileSize, changeCell, selectedTile, addRow, addColumn, deleteRow, deleteColumn, dragging, createViewpoint, viewpoints, editViewpoint } = this.props;
+    const { world, tiles, tileSize, changeCell, selectedTile, addRow, addColumn, deleteRow, deleteColumn, dragging, createViewpoint, viewpoints, editViewpoint, clearWorld } = this.props;
     const { modifierActive } = this.state;
 
     const maxXValue = Math.max.apply(null, (world.map(row => {return row.length;})));
@@ -126,7 +126,18 @@ export default class TileMap extends Component {
                   { buttonLabel }
                 </button>
               </td>
-              <td></td>
+              <td>
+                <button
+                  className={styles.clearButton}
+                  onClick={() => {
+                    if (confirm('Are you sure you want to clear the map?')) {
+                      clearWorld();
+                    }
+                  }}
+                >
+                  Clear
+                </button>
+              </td>
             </tr>
             <tr>
               <td>
