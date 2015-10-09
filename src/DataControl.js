@@ -21,20 +21,21 @@ export default class DataControl extends Component {
   }
 
   fileUploaded(e) {
-    const { loadWorld } = this.props;
+    const { loadAppData } = this.props;
 
-    ExportImportUtilities.validateUploadedWorldFile(e.target.files[0])
-    .then((loadedWorld) => {
-      loadWorld(loadedWorld['world'])
+    ExportImportUtilities.validateAppSaveFile(e.target.files[0])
+    .then((saveData) => {
+      const { loadAppData } = this.props;
+      loadAppData(saveData['scenes'], saveData['viewpoints'], saveData['world']);
     })
     .catch((err) => {
-      alert('You need to upload a file exported from this app, man.')
-    })
+      alert('You need to upload a file exported from this app, man.');
+    });;
   }
 
   render() {
 
-    const { worldData } = this.props;
+    const { scenes, viewpoints, world } = this.props;
 
     const date = new Date();
     const dateString = `${date.getUTCDate()}-${date.getUTCMonth()}-${date.getUTCFullYear()}-${date.getUTCHours()}-${date.getUTCMinutes()}`;
@@ -43,17 +44,17 @@ export default class DataControl extends Component {
       <div className={styles.root}>
         <a
           className={styles.button}
-          href={ExportImportUtilities.worldAsDataURI(worldData)}
-          download={`worldmap-${dateString}.json`}
+          href={ExportImportUtilities.appDataAsDataURI(scenes, viewpoints, world)}
+          download={`world-save-${dateString}.json`}
           target="_blank"
         >
-         Export
+         Save
         </a>
         <button
           className={styles.button}
           onClick={this.triggerInputClick}
         >
-          Import
+          Load
         </button>
         <input
           ref="fileInput"
@@ -63,6 +64,6 @@ export default class DataControl extends Component {
           onChange={this.fileUploaded}
         />
       </div>
-    )
+    );
   }
 }

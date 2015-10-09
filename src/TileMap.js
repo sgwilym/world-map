@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
+import MapCell from './MapCell';
+
 import styles from './TileMap.css';
 
 export default class TileMap extends Component {
@@ -15,9 +17,9 @@ export default class TileMap extends Component {
 
   render() {
 
-    const { world, tiles, tileSize, changeCell, selectedTile, addRow, addColumn, dragging } = this.props;
+    const { world, tiles, tileSize, changeCell, selectedTile, addRow, addColumn, dragging, createViewpoint, viewpoints, editViewpoint } = this.props;
 
-    const maxXValue = Math.max.apply(null, (world.map(row => {return row.length})));
+    const maxXValue = Math.max.apply(null, (world.map(row => {return row.length;})));
     const maxYValue = world.length;
 
     const makeWorldRow = (worldRow, rowIndex) => {
@@ -34,32 +36,24 @@ export default class TileMap extends Component {
       let cells = extendedRow.map((cell, cellIndex) => {
 
         let tileImagePath = require(tiles[cell]);
+        let cellViewpoints = Object.keys(viewpoints).find(id => {
+          return viewpoints[id].location.x == cellIndex &&
+          viewpoints[id].location.y == rowIndex;
+        });
 
-        return <td
-          className={styles.cell}
-          key={cellIndex}
-          style={{
-            backgroundImage: `url(${tileImagePath})`,
-          }}
-          width={tileSize}
-          height={tileSize}
-          onMouseOver={(e) => {
-            if (this.state.painting && !dragging) {
-              changeCell([rowIndex, cellIndex], selectedTile)
-            }
-          }}
-          onMouseDown={(e) => {
-            if (!dragging) {
-              changeCell([rowIndex, cellIndex], selectedTile)
-            }
-          }}
-          onClick={() => {
-            if (!dragging) {
-              changeCell([rowIndex, cellIndex], selectedTile)
-            }
-          }}
-        >
-        </td>
+        return <MapCell
+              key={cellIndex}
+              tileImagePath={tileImagePath}
+              tileSize={tileSize}
+              location={{x: cellIndex, y: rowIndex}}
+              painting={this.state.painting}
+              dragging={dragging}
+              changeCell={changeCell}
+              createViewpoint={createViewpoint}
+              editViewpoint={editViewpoint}
+              selectedTile={selectedTile}
+              viewpoints={cellViewpoints}
+            />;
       });
 
       return (
@@ -68,8 +62,8 @@ export default class TileMap extends Component {
         >
           { cells }
         </tr>
-      )
-    }
+      );
+    };
 
     return (
       <div className={styles.root}>
@@ -104,13 +98,13 @@ export default class TileMap extends Component {
                   width={tileSize * maxXValue}
                   className={styles.map}
                   onMouseDown={() => {
-                    this.setState({painting: true})
+                    this.setState({painting: true});
                   }}
                   onMouseUp={() => {
-                    this.setState({painting: false})
+                    this.setState({painting: false});
                   }}
                   onMouseLeave={(e) => {
-                    this.setState({painting: false})
+                    this.setState({painting: false});
                   }}
                 >
                   <tbody>
@@ -142,7 +136,7 @@ export default class TileMap extends Component {
           </tbody>
         </table>
       </div>
-    )
+    );
   }
 
 }

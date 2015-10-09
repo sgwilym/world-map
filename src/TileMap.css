@@ -12,16 +12,9 @@
   padding: 0;
 }
 
-.cell {
-  transition: background 100ms;
-  cursor: crosshair;
-  background-size: cover;
-  image-rendering: pixelated;
-}
-
 .addButton {
-  color: rgb(32, 167, 99);
-  background-color: rgb(164, 233, 198);
+  color: rgb(144, 144, 144);
+  background-color: rgb(236, 236, 236);
   font-size: 2em;
   border: none;
   width: 100%;
@@ -36,6 +29,7 @@
 }
 
 .addButton:hover {
+  color: rgb(25, 133, 84);
   background-color: rgb(115, 222, 168);
 }
 

@@ -1,29 +1,31 @@
 module.exports = {
 
-  worldAsDataURI(world) {
+  appDataAsDataURI(scenes, viewpoints, world) {
     const exportData = {
+      scenes,
+      viewpoints,
       world
     };
 
-    return `data:text/json;charset=utf-8,${escape(JSON.stringify(exportData))}`
+    return `data:text/json;charset=utf-8,${escape(JSON.stringify(exportData))}`;
   },
 
-  validateUploadedWorldFile(worldFile) {
+  validateAppSaveFile(saveFile) {
     const reader = new FileReader();
 
     const promise = new Promise((resolve, reject) => {
       reader.onload = (e) => {
-        const loadedWorld = JSON.parse(e.target.result);
-        if ('world' in loadedWorld) {
-          resolve(loadedWorld);
+        const saveData = JSON.parse(e.target.result);
+        if ('world' in saveData && 'scenes' in saveData && 'viewpoints' in saveData) {
+          resolve(saveData);
         } else {
           reject();
         }
-      }
-    })
+      };
+    });
 
-    reader.readAsText(worldFile);
+    reader.readAsText(saveFile);
     return promise;
   }
 
-}
+};

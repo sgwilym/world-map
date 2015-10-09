@@ -34,8 +34,8 @@ export default class MapViewer extends Component {
   }
 
   componentWillUnmount() {
-    document.removeEventListen('keydown', this.onKeyDown, false);
-    document.removeEventListen('keyup', this.onKeyUp, false);
+    document.removeEventListener('keydown', this.onKeyDown, false);
+    document.removeEventListener('keyup', this.onKeyUp, false);
   }
 
   onKeyDown(e) {
@@ -126,7 +126,7 @@ export default class MapViewer extends Component {
 
   render() {
 
-    const { width, height, tiles, tileSize, world, changeCell, selectedTile, addColumn, addRow, changeTileSize } = this.props;
+    const { width, height, tiles, tileSize, world, changeCell, selectedTile, addColumn, addRow, changeTileSize, createViewpoint, viewpoints, editViewpoint } = this.props;
     const { canDrag, dragging } = this.state;
 
     var rootStyle = styles.root;
@@ -143,10 +143,6 @@ export default class MapViewer extends Component {
         onMouseMove={this.onMouseMove}
         onMouseUp={this.draggingStopped}
       >
-        <ZoomControl
-          changeTileSize={changeTileSize}
-          zoomLevel={tileSize}
-        />
         <TileMap
           tiles={tiles}
           tileSize={tileSize}
@@ -156,6 +152,13 @@ export default class MapViewer extends Component {
           addColumn={addColumn}
           addRow={addRow}
           dragging={canDrag}
+          createViewpoint={createViewpoint}
+          editViewpoint={editViewpoint}
+          viewpoints={viewpoints}
+        />
+        <ZoomControl
+          changeTileSize={changeTileSize}
+          zoomLevel={tileSize}
         />
       </div>
     )

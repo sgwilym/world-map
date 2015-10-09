@@ -1,0 +1,41 @@
+.root {
+  transition: background 100ms;
+  cursor: crosshair;
+  background-size: cover;
+  position: relative;
+}
+
+.root:hover {
+  opacity: 0.9;
+}
+
+.decal {
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  cursor: pointer;
+}
+
+.addViewpoint {
+  composes: decal;
+  background-image: url('./icons/viewpoint-add.png');
+  width: 30%;
+  height: 30%;
+  top: 0; right: 0;
+  transition: all 100ms;
+  transform-origin: top right;
+}
+
+.addViewpoint:hover {
+  transform: scale(1.5);
+}
+
+.inspectViewpoint {
+  composes: decal;
+  background-image: url('./icons/viewpoint-inspect.png');
+  width: 50%;
+  height: 50%;
+  margin: auto;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
