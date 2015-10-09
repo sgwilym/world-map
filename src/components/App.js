@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import createFragment from 'react-addons-create-fragment';
 import { connect } from 'react-redux';
 
+import { ActionCreators } from 'redux-undo';
 import { selectTile, changeTileSize, openViewpointEditor, closeViewpointEditor} from '../actions/interface';
 import { addColumn, addRow, deleteColumn, deleteRow, changeCell, loadWorld, fillWorld } from '../actions/world';
 import { createViewpoint, connectSceneToViewpoint, setSceneToDisplayOnViewpoint, removeSceneToDisplayOnViewpoint, deleteViewpoint, loadViewpoints } from '../actions/viewpoints';
@@ -35,7 +36,7 @@ class App extends Component {
               dispatch(closeViewpointEditor());
             }}
 
-            viewpointTile={tiles[world[viewpoints[editingViewpoint].location.y][viewpoints[editingViewpoint].location.x]]}
+            viewpointTile={tiles[world.present[viewpoints[editingViewpoint].location.y][viewpoints[editingViewpoint].location.x]]}
 
             scenes={scenes}
 
@@ -121,7 +122,7 @@ class App extends Component {
           createFragment(
             {controls:<div className={styles.controls}>
               <DataControl
-                world={world}
+                world={world.present}
                 scenes={scenes}
                 viewpoints={viewpoints}
                 loadAppData={(loadedScenes, loadedViewpoints, loadedWorld) => {
@@ -137,6 +138,7 @@ class App extends Component {
               />
             </div>,
             map: <MapViewer
+              {...this.props}
               changeTileSize={(tileSize) => {
                 dispatch(changeTileSize(tileSize));
               }}
@@ -164,8 +166,14 @@ class App extends Component {
               editViewpoint={(viewpointID) => {
                 dispatch(openViewpointEditor(viewpointID));
               }}
+              undo={() => {
+                dispatch(ActionCreators.undo());
+              }}
+              redo={() => {
+                dispatch(ActionCreators.redo());
+              }}
               tiles={tiles}
-              {...this.props}
+              world={world.present}
             />}
           )
         }

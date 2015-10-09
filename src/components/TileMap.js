@@ -44,7 +44,7 @@ export default class TileMap extends Component {
 
   render() {
 
-    const { world, tiles, tileSize, changeCell, selectedTile, addRow, addColumn, deleteRow, deleteColumn, dragging, createViewpoint, viewpoints, editViewpoint, clearWorld } = this.props;
+    const { world, tiles, tileSize, changeCell, selectedTile, addRow, addColumn, deleteRow, deleteColumn, dragging, createViewpoint, viewpoints, editViewpoint, clearWorld, undo, redo } = this.props;
     const { modifierActive } = this.state;
 
     const maxXValue = Math.max.apply(null, (world.map(row => {return row.length;})));
@@ -117,7 +117,14 @@ export default class TileMap extends Component {
         >
           <tbody>
             <tr>
-              <td></td>
+              <td>
+                <button
+                  className={styles.undoButton}
+                  onClick={undo}
+                >
+                  Undo Paint
+                </button>
+              </td>
               <td>
                 <button
                   className={buttonClassName}
@@ -128,14 +135,10 @@ export default class TileMap extends Component {
               </td>
               <td>
                 <button
-                  className={styles.clearButton}
-                  onClick={() => {
-                    if (confirm('Are you sure you want to clear the map?')) {
-                      clearWorld();
-                    }
-                  }}
+                  className={styles.redoButton}
+                  onClick={redo}
                 >
-                  Clear
+                  Redo Paint
                 </button>
               </td>
             </tr>
@@ -187,7 +190,18 @@ export default class TileMap extends Component {
                   { buttonLabel }
                 </button>
               </td>
-              <td></td>
+              <td>
+                <button
+                  className={styles.clearButton}
+                  onClick={() => {
+                    if (confirm('Are you sure you want to clear the map?')) {
+                      clearWorld();
+                    }
+                  }}
+                >
+                  Clear
+                </button>
+              </td>
             </tr>
           </tbody>
         </table>

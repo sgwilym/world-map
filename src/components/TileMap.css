@@ -33,7 +33,7 @@
   background-color: rgb(115, 222, 168);
 }
 
-.addButton:focus, .clearButton:focus {
+.addButton:focus, .cornerButton:focus {
   outline: 0;
 }
 
@@ -48,11 +48,23 @@
   background: rgb(242, 80, 58);
 }
 
-.clearButton {
+.cornerButton {
   background: rgb(181, 181, 181);
   border: none;
   width: 100%;
   height: 100%;
   padding: 0;
   cursor: pointer;
+}
+
+.clearButton {
+  composes: cornerButton;
+}
+
+.undoButton {
+  composes: cornerButton;
+}
+
+.redoButton {
+  composes: cornerButton
 }
