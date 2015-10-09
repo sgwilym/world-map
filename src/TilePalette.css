@@ -4,7 +4,6 @@
   padding: .5em;
   background-color: rgb(241, 241, 241);
   overflow: auto;
-  height: 50%;
   flex: 1 1 auto;
 
 }
@@ -17,16 +16,16 @@
   flex: 0 0 auto;
   background-size: cover;
   transition: all 50ms;
-  opacity: 0.8;
+  transform-origin: center left;
 }
 
 .selectedPalette {
   composes: palette;
-  transform: scale(1.1, 1.1);
-  opacity: 1;
+  transform: scale(1.05) rotate(-2deg);
+  border: 2px solid black;
 }
 
 .palette:hover {
-  transform: scale(1.1, 1.1);
+  transform: scale(1.1) rotate(-2deg);
   opacity: 1;
 }

@@ -9,15 +9,17 @@
   font-size: 1em;
   text-decoration: none;
   font-family: monospace;
-  background-color: rgb(166, 237, 203);
+  background-color: rgb(236, 236, 236);
   text-align: center;
   border: none;
   margin: 0 0 .5em 0;
   transition: all 100ms;
+  cursor: pointer;
 }
 
 .button:hover {
   transform: scale(1.1, 1.1);
+  background-color: rgb(166, 237, 203);
   transform-origin: left;
 }
 

@@ -7,7 +7,15 @@
     "build:webpack": "NODE_ENV=production webpack --config webpack.config.prod.js",
     "build": "npm run clean && npm run build:webpack",
     "start": "node devServer.js",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "test": "BABEL_JEST_STAGE=0 jest"
+  },
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react"
+    ],
+    "verbose": true
   },
   "repository": {
     "type": "git",
@@ -37,6 +45,7 @@
     "babel": "^5.8.23",
     "babel-core": "^5.4.7",
     "babel-eslint": "^3.1.9",
+    "babel-jest": "^5.3.0",
     "babel-loader": "^5.1.2",
     "babel-plugin-react-autoprefix": "^0.2.6",
     "babel-plugin-react-transform": "^1.1.1",
@@ -45,6 +54,7 @@
     "eslint-plugin-react": "^2.3.0",
     "express": "^4.13.3",
     "file-loader": "^0.8.4",
+    "jest-cli": "^0.5.9",
     "postcss-loader": "^0.6.0",
     "react-transform-catch-errors": "^1.0.0",
     "react-transform-hmr": "^1.0.0",
@@ -61,6 +71,7 @@
     "react-addons-update": "^0.14.0-rc1",
     "react-dom": "^0.14.0-rc1",
     "react-redux": "^3.0.1",
-    "redux": "^3.0.2"
+    "redux": "^3.0.2",
+    "redux-multi": "^0.1.9"
   }
 }

@@ -1,7 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { createStore } from 'redux';
+import { createStore, compose, applyMiddleware } from 'redux';
+import { devTools, persistState } from 'redux-devtools';
+import { DevTools, DebugPanel, LogMonitor } from 'redux-devtools/lib/react';
+import multi from 'redux-multi';
+
 import { Provider } from 'react-redux';
 
 import App from './App';
@@ -9,47 +13,35 @@ import App from './App';
 import worldMapApp from './reducers';
 
 let initialState = {
-  tiles: {
-    // Rocks
-    0: './tiles/rocks00.png',
-    1: './tiles/rocks01.png',
-    2: './tiles/rocks02.png',
-    3: './tiles/rocks03.png',
-    4: './tiles/rocks04.png',
-    5: './tiles/rocks05.png',
-    6: './tiles/rocks06.png',
-    7: './tiles/rocks07.png',
-    8: './tiles/rocks08.png',
-    9: './tiles/rocks09.png',
-    10: './tiles/rocks10.png',
-    11: './tiles/rocks11.png',
-    12: './tiles/rocks12.png',
-    13: './tiles/rocks13.png',
-    14: './tiles/rocks14.png',
-    15: './tiles/rocks15.png',
-    16: './tiles/rocks16.png',
-    17: './tiles/rocks17.png',
-    18: './tiles/rocks18.png',
-    19: './tiles/rocks19.png',
-    20: './tiles/rocks20.png',
-    21: './tiles/rocks21.png',
-    22: './tiles/rocks22.png',
-    23: './tiles/rocks23.png',
-    24: './tiles/rocks24.png',
-    25: './tiles/rocks25.png',
-  },
-  tileSize: 50,
-  world: [
-    ['13','12','12','12','12','12','11'],['18',0,0,0,0,'22',0],[0,'19','21','8','10',0,0],[0,0,'20','13','11',0,'23'],['23',0,'22','24','25',0,0],[0,'22',0,0,0,'19',0],['8','9','9','9','9','9','10']
-  ],
-  selectedTile: 0
-}
+  tileSize: 100,
+  world: [[0,0,0,0,0,0,0,0],['0','0','0','11','9','0','0',0],['0','34','11','23','28','9','0',0],['14','25','23','19','20','28','26','12'],['17','24','22','32','29','27','16','15'],['0','0','17','24','6','39','37',0],['0','0','0','0','0','0','0',0]],
+  selectedTile: 0,
+  viewpoints: {},
+  scenes: {}
+};
 
-let store = createStore(worldMapApp, initialState);
+const devCreateStore = compose(
+  devTools(),
+  persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/))
+)(createStore);
+
+const creatStoreToUse = __DEVTOOLS__ ? devCreateStore : createStore;
+
+const createStoreWithMiddleware = applyMiddleware(multi)(creatStoreToUse);
+
+const store = createStoreWithMiddleware(worldMapApp, initialState);
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <div style={{height: '100%', width: '100%'}}>
+    <Provider store={store}>
+      <App />
+    </Provider>
+    { __DEVTOOLS__ &&
+      <DebugPanel top right bottom>
+        <DevTools store={store} monitor={LogMonitor} />
+      </DebugPanel>
+    }
+
+  </div>,
   document.getElementById('root')
 );

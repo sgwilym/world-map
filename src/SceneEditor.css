@@ -1,0 +1,67 @@
+.root {
+  display: flex;
+  padding: 1em;
+  flex-direction: column;
+  width: calc(100% - 120px - 2em);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  height: 120px;
+  padding: 0 1em;
+}
+
+.titleField {
+  display: block;
+  font-size: 1.5em;
+  border: none;
+  border-bottom: 1px dashed rgb(198, 198, 198);
+  margin: 0 0 .5em 0;
+  background: transparent;
+}
+
+.titleField:focus, .deleteButton:focus {
+  outline: none;
+}
+
+.deleteButton {
+  color: rgb(255, 219, 212);
+  background-color: rgb(240, 90, 90);
+  border: none;
+  border-radius: .15em;
+  cursor: pointer;
+}
+
+.subscenes {
+  display: flex;
+  align-items: flex-end;
+  overflow: auto;
+  padding: 0 1em 0 1em;
+}
+
+.addSubsceneButton {
+  color: white;
+  background: rgb(201, 201, 201);
+  margin: 0 .5em 0 0;
+  border: none;
+  cursor: pointer;
+  align-self: center;
+}
+
+.addSubsceneButton:focus {
+  outline: none;
+}
+
+.subsceneButton {
+  padding: .5em;
+  margin: 0 .5em 0 0;
+  cursor: pointer;
+}
+
+.selectedSubsceneButton {
+  composes: subsceneButton;
+  background-color: rgb(242, 242, 242);
+}

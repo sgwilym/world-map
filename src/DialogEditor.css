@@ -1,0 +1,50 @@
+.dialogEditor {
+  width: 20em;
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 1em 0;
+}
+
+.lineEditor {
+  display: flex;
+  border-bottom: 2px solid rgb(232, 232, 232);
+}
+
+.lineEditor:last-of-type {
+  border-bottom: none;
+}
+
+.lineEditor input {
+  padding: .4em;
+  flex: 1 0 auto;
+  display: block;
+  border: none;
+}
+
+.lineEditor button {
+  color: rgb(113, 113, 113);
+  cursor: pointer;
+  border: none;
+  background: rgb(232, 232, 232);
+}
+
+.lineEditor select {
+  border: none;
+}
+
+.lineEditor *:focus, .addlineButton:focus {
+  outline: none;
+}
+
+.addlineButton {
+  padding: .5em;
+  color: rgb(255, 255, 255);
+  background-color: rgb(190, 190, 190);
+  border: none;
+  border-radius: 0 0 .5em .5em;
+}
+
+.connectSelect {
+  border: none;
+  background-color: white;
+}
