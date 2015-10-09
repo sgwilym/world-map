@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import SceneEditor from './SceneEditor';
+import DisplaySceneSelection from './DisplaySceneSelection';
 import { DEFAULT_VIEWPOINT_SCENE } from '../ViewpointState';
 
 import styles from './ViewpointEditor.css';
@@ -39,56 +40,8 @@ export default class ViewpointEditor extends Component {
       return Object.assign({}, scenes[sceneID], {id: sceneID});
     });
 
-    var sceneOptions = [];
-    for (let sceneID in scenes) {
-      sceneOptions.push(
-        {
-          id: sceneID,
-          optionElement: <option
-            key={sceneID}
-            value={sceneID}
-          >
-            After { scenes[sceneID].name }
-          </option>
-        }
-      );
-    }
-
     const makeSceneButton = (scene) => {
-
       const selected = scene.id == editingScene;
-
-      let sceneShownAfterOptions = sceneOptions.filter((otherScene) => {
-        return parseInt(otherScene.id) !== scene.id;
-      }).map((otherScene) => {
-        return otherScene.optionElement;
-      });
-
-      sceneShownAfterOptions.unshift(
-        <option
-          key={DEFAULT_VIEWPOINT_SCENE}
-          value={DEFAULT_VIEWPOINT_SCENE}
-        >
-          By default
-        </option>
-      );
-
-      var shownAfterValue = Object.keys(viewpoint.displayScene).filter((key) => {
-        return viewpoint.displayScene[key] === scene.id;
-      })[0];
-
-      if (shownAfterValue == undefined) {
-        sceneShownAfterOptions.unshift(
-          <option
-            key="none"
-            value="none"
-          >
-            Never
-          </option>
-        );
-        shownAfterValue = 'none';
-      }
-
       return (
         <div
           key={scene.id}
@@ -96,17 +49,12 @@ export default class ViewpointEditor extends Component {
           className={selected ? styles.selectedSceneButton : styles.sceneButton}
         >
           <p>{scene.name}</p>
-          <p>Display this scene:</p>
-          <select
-            value={shownAfterValue}
-            onChange={(e) => {
-              if (e.target.value !== 'none') {
-                changeViewpointDisplaySettings(shownAfterValue, e.target.value, scene.id);
-              }
-            }}
-          >
-           { sceneShownAfterOptions }
-          </select>
+          <DisplaySceneSelection
+            scenes={scenes}
+            scene={scene}
+            displaySceneSettings={viewpoint.displayScene}
+            changeDisplaySettings={changeViewpointDisplaySettings}
+          />
         </div>
       );
     };
