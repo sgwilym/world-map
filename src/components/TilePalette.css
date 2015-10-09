@@ -1,7 +1,8 @@
 .root {
   display: flex;
-  flex-direction: column;
   padding: .5em;
+  flex-wrap: wrap;
+  width: calc(100px + .5em);
   background-color: rgb(241, 241, 241);
   overflow: auto;
   flex: 1 1 auto;
@@ -12,20 +13,27 @@
   width: 50px;
   height: 50px;
   cursor: pointer;
-  margin: 0 0 .5em 0;
+  margin: 0 .5em .5em 0;
   flex: 0 0 auto;
   background-size: cover;
   transition: all 50ms;
-  transform-origin: center left;
+}
+
+.palette:nth-child(even) {
+  margin: 0 0 .5em 0;
 }
 
 .selectedPalette {
   composes: palette;
-  transform: scale(1.05) rotate(-2deg);
-  border: 2px solid black;
+  transform: scale(1.1) rotate(3deg);
+  position: relative;
+  top: -2px; left: -2px;
+  box-shadow: 2px 2px 0 rgb(39, 47, 57);
 }
 
 .palette:hover {
-  transform: scale(1.1) rotate(-2deg);
-  opacity: 1;
+  transform: scale(1.1) rotate(-4deg);
+  box-shadow: -2px 2px 0 rgb(39, 47, 57);
+  position: relative;
+  top: -2px; left: 2px;
 }
