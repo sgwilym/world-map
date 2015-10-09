@@ -19,7 +19,7 @@
 
 .addViewpoint {
   composes: decal;
-  background-image: url('./icons/viewpoint-add.png');
+  background-image: url('../icons/viewpoint-add.png');
   width: 30%;
   height: 30%;
   top: 0; right: 0;
@@ -33,7 +33,7 @@
 
 .inspectViewpoint {
   composes: decal;
-  background-image: url('./icons/viewpoint-inspect.png');
+  background-image: url('../icons/viewpoint-inspect.png');
   width: 50%;
   height: 50%;
   margin: auto;

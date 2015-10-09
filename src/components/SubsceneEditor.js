@@ -4,7 +4,7 @@ import SubsceneImagePicker from './SubsceneImagePicker';
 import StaticDialogEditor from './StaticDialogEditor';
 import InteractiveDialogEditor from './InteractiveDialogEditor';
 
-import { STATIC_DIALOG, INTERACTIVE_DIALOG } from './Scenes';
+import { STATIC_DIALOG, INTERACTIVE_DIALOG } from '../SceneState';
 import styles from './SubsceneEditor.css';
 
 export default class SubsceneEditor extends Component {
@@ -50,7 +50,7 @@ export default class SubsceneEditor extends Component {
         />;
         break;
       default:
-        dialogEditor = <p>Uh oh… Sam made a mistake.</p>
+        dialogEditor = <p>Uh oh… Sam made a mistake.</p>;
     }
 
     return (

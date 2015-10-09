@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
-import ExportImportUtilities from './ExportImportUtilities';
+import * as DataUtilities from '../DataUtilities';
 
 import styles from './DataControl.css';
 
@@ -23,7 +23,7 @@ export default class DataControl extends Component {
   fileUploaded(e) {
     const { loadAppData } = this.props;
 
-    ExportImportUtilities.validateAppSaveFile(e.target.files[0])
+    DataUtilities.validateAppSaveFile(e.target.files[0])
     .then((saveData) => {
       const { loadAppData } = this.props;
       loadAppData(saveData['scenes'], saveData['viewpoints'], saveData['world']);
@@ -44,7 +44,7 @@ export default class DataControl extends Component {
       <div className={styles.root}>
         <a
           className={styles.button}
-          href={ExportImportUtilities.appDataAsDataURI(scenes, viewpoints, world)}
+          href={DataUtilities.appDataAsDataURI(scenes, viewpoints, world)}
           download={`world-save-${dateString}.json`}
           target="_blank"
         >

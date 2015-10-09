@@ -35,7 +35,7 @@ export default class TileMap extends Component {
 
       let cells = extendedRow.map((cell, cellIndex) => {
 
-        let tileImagePath = require(tiles[cell]);
+        let tileImagePath = tiles[cell];
         let cellViewpoints = Object.keys(viewpoints).find(id => {
           return viewpoints[id].location.x == cellIndex &&
           viewpoints[id].location.y == rowIndex;

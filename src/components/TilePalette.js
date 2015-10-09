@@ -13,9 +13,9 @@ export default class TilePalette extends Component {
 
       for (let tileKey in tiles) {
 
-        let tileImagePath = require(tiles[tileKey]);
+        let tileImagePath = tiles[tileKey];
         let selected = tileKey == selectedTile;
-        let paletteClass = selected ? styles.selectedPalette : styles.palette
+        let paletteClass = selected ? styles.selectedPalette : styles.palette;
 
         palettes.push(
           <div
@@ -29,17 +29,17 @@ export default class TilePalette extends Component {
             }
           >
           </div>
-        )
+        );
       }
 
       return palettes;
-    }
+    };
 
     return (
       <div className={styles.root}>
         { makePalettes(tiles) }
       </div>
-    )
+    );
   }
 
 }

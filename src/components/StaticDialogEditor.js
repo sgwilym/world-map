@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { CONNECT_END } from './Scenes';
+import { CONNECT_END } from '../SceneState';
 
 import styles from './DialogEditor.css';
 
@@ -39,7 +39,7 @@ export default class StaticDialogEditor extends Component {
            Delete
           </button>
         </div>
-      )
+      );
     };
 
     const makeSceneOption = (otherSubsceneID) => {
@@ -51,11 +51,11 @@ export default class StaticDialogEditor extends Component {
           >
             Go to subscene {otherSubsceneID}
           </option>
-        )
+        );
       }
-    }
+    };
 
-    var connectOptions = sceneSubsceneIDs.filter((sceneID) => {return sceneID !== subsceneID}).map(makeSceneOption);
+    var connectOptions = sceneSubsceneIDs.filter((sceneID) => {return sceneID !== subsceneID;}).map(makeSceneOption);
 
     connectOptions.push(
       <option
@@ -89,7 +89,7 @@ export default class StaticDialogEditor extends Component {
         </div>
 
       </div>
-    )
+    );
   }
 
 }

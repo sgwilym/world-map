@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import SceneImages from './SceneImages';
+import SceneImages from '../scene-images';
 import styles from './SubsceneImagePicker.css';
 
 export default class SubsceneImagePicker extends Component {
@@ -32,13 +32,12 @@ export default class SubsceneImagePicker extends Component {
     const { picking } = this.state;
 
     const makeImageOption = (imagePath, i) => {
-      let path = require(imagePath);
       return <img
             key={i}
             onClick={this.pickImage.bind(this, i)}
             className={styles.imageOption}
-            src={path}
-          />
+            src={imagePath}
+          />;
     };
 
     return (
@@ -48,7 +47,7 @@ export default class SubsceneImagePicker extends Component {
           <img
             className={styles.picked}
             onClick={this.openPicker}
-            src={require(SceneImages[subsceneImage])}
+            src={SceneImages[subsceneImage]}
           />
         }
         { subsceneImage == null && !picking &&
@@ -66,7 +65,7 @@ export default class SubsceneImagePicker extends Component {
           </div>
         }
       </div>
-    )
+    );
   }
 
 }

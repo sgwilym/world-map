@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import SceneEditor from './SceneEditor';
-import { DEFAULT_VIEWPORT_SCENE } from './Viewpoints';
+import { DEFAULT_VIEWPOINT_SCENE } from '../ViewpointState';
 
 import styles from './ViewpointEditor.css';
 
@@ -66,8 +66,8 @@ export default class ViewpointEditor extends Component {
 
       sceneShownAfterOptions.unshift(
         <option
-          key={DEFAULT_VIEWPORT_SCENE}
-          value={DEFAULT_VIEWPORT_SCENE}
+          key={DEFAULT_VIEWPOINT_SCENE}
+          value={DEFAULT_VIEWPOINT_SCENE}
         >
           By default
         </option>
@@ -126,7 +126,7 @@ export default class ViewpointEditor extends Component {
           <div
             className={styles.viewpoint}
             style={{
-              backgroundImage: `url('${require(viewpointTile)}')`
+              backgroundImage: `url('${viewpointTile}')`
             }}
           >
             <span className={styles.xCoord}>

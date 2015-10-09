@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { CONNECT_END } from './Scenes';
+import { CONNECT_END } from '../SceneState';
 
 import styles from './DialogEditor.css';
 
@@ -19,11 +19,11 @@ export default class InteractiveDialogEditor extends Component {
           >
             Go to subscene {otherSubsceneID}
           </option>
-        )
+        );
       }
-    }
+    };
 
-    var connectOptions = sceneSubsceneIDs.filter((sceneID) => {return sceneID !== subsceneID}).map(makeSceneOption);
+    var connectOptions = sceneSubsceneIDs.filter((sceneID) => {return sceneID !== subsceneID;}).map(makeSceneOption);
     connectOptions.push(
       <option
         key={CONNECT_END}
@@ -38,14 +38,14 @@ export default class InteractiveDialogEditor extends Component {
         <div className={styles.lineEditor}>
           <input
             onChange={(e) => {
-              editChoiceText(i, e.target.value)
+              editChoiceText(i, e.target.value);
             }}
             value={choice.text}
           />
           <select
             value={choice.connectsTo}
             onChange={(e) => {
-              connectChoice(i, e.target.value)
+              connectChoice(i, e.target.value);
             }}
           >
             { connectOptions }
@@ -56,8 +56,8 @@ export default class InteractiveDialogEditor extends Component {
             Delete
           </button>
         </div>
-      )
-    }
+      );
+    };
 
     return (
       <div className={styles.dialogEditor}>
@@ -69,7 +69,7 @@ export default class InteractiveDialogEditor extends Component {
           Add new choice
         </button>
       </div>
-    )
+    );
   }
 
 }
