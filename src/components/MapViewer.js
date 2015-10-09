@@ -18,7 +18,7 @@ export default class MapViewer extends Component {
         x: 0,
         y: 0
       }
-    }
+    };
 
     this.onKeyDown = this.onKeyDown.bind(this);
     this.onKeyUp = this.onKeyUp.bind(this);
@@ -40,13 +40,13 @@ export default class MapViewer extends Component {
 
   onKeyDown(e) {
     if(e.keyCode == 32 && !this.state.canDrag) {
-      this.setState({canDrag: true})
+      this.setState({canDrag: true});
     }
   }
 
   onKeyUp(e) {
     if(e.keyCode == 32) {
-      this.setState({canDrag: false})
+      this.setState({canDrag: false});
     }
   }
 
@@ -86,7 +86,7 @@ export default class MapViewer extends Component {
     const reducedMomentum = {
       x: momentum.x / 1.1,
       y: momentum.y / 1.1,
-    }
+    };
 
     const stillHasMomentum = (Math.abs(reducedMomentum.x) >= 1 || Math.abs(reducedMomentum.y) >= 1);
 
@@ -98,7 +98,7 @@ export default class MapViewer extends Component {
           x: 0,
           y: 0
         }
-      })
+      });
     }
   }
 
@@ -126,7 +126,7 @@ export default class MapViewer extends Component {
 
   render() {
 
-    const { width, height, tiles, tileSize, world, changeCell, selectedTile, addColumn, addRow, changeTileSize, createViewpoint, viewpoints, editViewpoint } = this.props;
+    const { width, height, tiles, tileSize, world, changeCell, selectedTile, addColumn, addRow, deleteColumn, deleteRow, changeTileSize, createViewpoint, viewpoints, editViewpoint } = this.props;
     const { canDrag, dragging } = this.state;
 
     var rootStyle = styles.root;
@@ -151,6 +151,8 @@ export default class MapViewer extends Component {
           selectedTile={selectedTile}
           addColumn={addColumn}
           addRow={addRow}
+          deleteRow={deleteRow}
+          deleteColumn={deleteColumn}
           dragging={canDrag}
           createViewpoint={createViewpoint}
           editViewpoint={editViewpoint}
@@ -161,7 +163,7 @@ export default class MapViewer extends Component {
           zoomLevel={tileSize}
         />
       </div>
-    )
+    );
 
   }
 

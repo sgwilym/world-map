@@ -32,6 +32,29 @@ export default function world(state = [], action) {
         return newRow;
       });
     }
+  case ActionTypes.DELETE_COLUMN:
+    if (action.pop) {
+      return state.map((row) => {
+        let newRow = row.slice();
+        newRow.pop();
+        return newRow;
+      });
+    } else {
+      return state.map((row) => {
+        let newRow = row.slice();
+        newRow.shift();
+        return newRow;
+      });
+    }
+  case ActionTypes.DELETE_ROW:
+    let nextState = state.slice();
+    if (action.pop) {
+      nextState.pop();
+      return nextState;
+    } else {
+      nextState.shift();
+      return nextState;
+    }
   case ActionTypes.LOAD_WORLD:
     return action.loadedWorld;
   case ActionTypes.CHANGE_CELL:

@@ -11,13 +11,41 @@ export default class TileMap extends Component {
     super(props);
 
     this.state = {
-      painting: false
+      painting: false,
+      modifierActive: false
     };
+
+    this.onKeyUp = this.onKeyUp.bind(this);
+    this.onKeyDown = this.onKeyDown.bind(this);
+  }
+
+  componentWillMount() {
+    document.addEventListener('keydown', this.onKeyDown, false);
+    document.addEventListener('keyup', this.onKeyUp, false);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.onKeyDown, false);
+    document.removeEventListener('keyup', this.onKeyUp, false);
+  }
+
+  onKeyDown(e) {
+    if (e.keyCode == 68) {
+      this.setState({modifierActive: true});
+    }
+  }
+
+
+  onKeyUp(e) {
+    if (e.keyCode == 68) {
+      this.setState({modifierActive: false});
+    }
   }
 
   render() {
 
-    const { world, tiles, tileSize, changeCell, selectedTile, addRow, addColumn, dragging, createViewpoint, viewpoints, editViewpoint } = this.props;
+    const { world, tiles, tileSize, changeCell, selectedTile, addRow, addColumn, deleteRow, deleteColumn, dragging, createViewpoint, viewpoints, editViewpoint } = this.props;
+    const { modifierActive } = this.state;
 
     const maxXValue = Math.max.apply(null, (world.map(row => {return row.length;})));
     const maxYValue = world.length;
@@ -65,6 +93,23 @@ export default class TileMap extends Component {
       );
     };
 
+    const buttonClassName = modifierActive ? styles.deleteButton : styles.addButton;
+    const buttonLabel = modifierActive ? '—' : '+';
+    const columnButtonOnClick = (after) => {
+      if (modifierActive) {
+        deleteColumn(after);
+      } else {
+        addColumn(after);
+      }
+    };
+    const rowButtonOnClick = (after) => {
+      if (modifierActive) {
+        deleteRow(after);
+      } else {
+        addRow(after);
+      }
+    };
+
     return (
       <div className={styles.root}>
         <table
@@ -75,10 +120,10 @@ export default class TileMap extends Component {
               <td></td>
               <td>
                 <button
-                  className={styles.addButton}
-                  onClick={addRow.bind(this, false)}
+                  className={buttonClassName}
+                  onClick={rowButtonOnClick.bind(this, false)}
                 >
-                  +
+                  { buttonLabel }
                 </button>
               </td>
               <td></td>
@@ -86,10 +131,10 @@ export default class TileMap extends Component {
             <tr>
               <td>
               <button
-                className={styles.addButton}
-                onClick={addColumn.bind(this, false)}
+                className={buttonClassName}
+                onClick={columnButtonOnClick.bind(this, false)}
               >
-                +
+                { buttonLabel }
               </button>
               </td>
               <td>
@@ -114,10 +159,10 @@ export default class TileMap extends Component {
               </td>
               <td>
                 <button
-                  className={styles.addButton}
-                  onClick={addColumn.bind(this, true)}
+                  className={buttonClassName}
+                  onClick={columnButtonOnClick.bind(this, true)}
                 >
-                  +
+                  { buttonLabel }
                 </button>
               </td>
             </tr>
@@ -125,10 +170,10 @@ export default class TileMap extends Component {
               <td></td>
               <td>
                 <button
-                  className={styles.addButton}
-                  onClick={addRow.bind(this, true)}
+                  className={buttonClassName}
+                  onClick={rowButtonOnClick.bind(this, true)}
                 >
-                  +
+                  { buttonLabel }
                 </button>
               </td>
               <td></td>

@@ -36,3 +36,14 @@
 .addButton:focus {
   outline: 0;
 }
+
+.deleteButton {
+  composes: addButton;
+  color: white;
+  background: rgb(242, 80, 58);
+}
+
+.deleteButton:hover {
+  color: white;
+  background: rgb(242, 80, 58);
+}
