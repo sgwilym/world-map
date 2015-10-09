@@ -1,7 +1,7 @@
 import update from 'react-addons-update';
-import { newID } from './Scenes';
+import { newID } from './SceneState';
 
-export const DEFAULT_VIEWPORT_SCENE = 'DEFAULT_VIEWPORT_SCENE';
+export const DEFAULT_VIEWPOINT_SCENE = 'DEFAULT_VIEWPOINT_SCENE';
 
 export default function(viewpointsState) {
 
@@ -31,7 +31,7 @@ export default function(viewpointsState) {
         return update(nextState, {
           [viewpointID]: {
             displayScene: {
-              DEFAULT_VIEWPORT_SCENE: { $set: sceneID }
+              DEFAULT_VIEWPOINT_SCENE: { $set: sceneID }
             }
           }
         });

@@ -8,7 +8,7 @@ import multi from 'redux-multi';
 
 import { Provider } from 'react-redux';
 
-import App from './App';
+import App from './components/App';
 
 import worldMapApp from './reducers';
 
