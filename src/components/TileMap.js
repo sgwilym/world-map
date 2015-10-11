@@ -118,12 +118,6 @@ export default class TileMap extends Component {
           <tbody>
             <tr>
               <td>
-                <button
-                  className={styles.undoButton}
-                  onClick={undo}
-                >
-                  Undo Paint
-                </button>
               </td>
               <td>
                 <button
@@ -134,12 +128,6 @@ export default class TileMap extends Component {
                 </button>
               </td>
               <td>
-                <button
-                  className={styles.redoButton}
-                  onClick={redo}
-                >
-                  Redo Paint
-                </button>
               </td>
             </tr>
             <tr>
@@ -191,16 +179,6 @@ export default class TileMap extends Component {
                 </button>
               </td>
               <td>
-                <button
-                  className={styles.clearButton}
-                  onClick={() => {
-                    if (confirm('Are you sure you want to clear the map?')) {
-                      clearWorld();
-                    }
-                  }}
-                >
-                  Clear
-                </button>
               </td>
             </tr>
           </tbody>

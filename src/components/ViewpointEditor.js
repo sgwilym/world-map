@@ -48,7 +48,7 @@ export default class ViewpointEditor extends Component {
           onClick={this.editScene.bind(this, scene.id)}
           className={selected ? styles.selectedSceneButton : styles.sceneButton}
         >
-          <p>{scene.name}</p>
+          {scene.name}
           <DisplaySceneSelection
             scenes={scenes}
             scene={scene}
@@ -85,14 +85,17 @@ export default class ViewpointEditor extends Component {
             </span>
           </div>
 
+          { viewpointScenes.map(makeSceneButton) }
+
+          { viewpoint.scenes.length == 0 &&
+            <p className={styles.noScenes}>No scenes.</p>
+          }
+
           <button
             className={styles.createSceneButton}
             onClick={createScene}
           >
-            Make scene
           </button>
-
-          { viewpointScenes.map(makeSceneButton) }
 
           <button
             className={styles.deleteViewpointButton}

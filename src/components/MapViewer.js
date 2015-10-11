@@ -157,9 +157,6 @@ export default class MapViewer extends Component {
           createViewpoint={createViewpoint}
           editViewpoint={editViewpoint}
           viewpoints={viewpoints}
-          clearWorld={clearWorld}
-          undo={undo}
-          redo={redo}
         />
         <ZoomControl
           changeTileSize={changeTileSize}

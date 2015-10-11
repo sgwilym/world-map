@@ -14,6 +14,7 @@ import tiles from '../tiles';
 import TilePalette from './TilePalette';
 import MapViewer from './MapViewer';
 import DataControl from './DataControl';
+import AppControls from './AppControls';
 import ViewpointEditor from './ViewpointEditor';
 
 import styles from './App.css';
@@ -29,14 +30,14 @@ class App extends Component {
           <ViewpointEditor
 
             viewpoint={
-              Object.assign({}, viewpoints[editingViewpoint], {id: editingViewpoint})
+              Object.assign({}, viewpoints.present[editingViewpoint], {id: editingViewpoint})
             }
 
             closeViewpointEditor={() => {
               dispatch(closeViewpointEditor());
             }}
 
-            viewpointTile={tiles[world.present[viewpoints[editingViewpoint].location.y][viewpoints[editingViewpoint].location.x]]}
+            viewpointTile={tiles[world.present[viewpoints.present[editingViewpoint].location.y][viewpoints.present[editingViewpoint].location.x]]}
 
             scenes={scenes}
 
@@ -124,9 +125,20 @@ class App extends Component {
               <DataControl
                 world={world.present}
                 scenes={scenes}
-                viewpoints={viewpoints}
+                viewpoints={viewpoints.present}
                 loadAppData={(loadedScenes, loadedViewpoints, loadedWorld) => {
                   dispatch(loadAppData(loadedScenes, loadedViewpoints, loadedWorld));
+                }}
+              />
+              <AppControls
+                undo={() => {
+                  dispatch(ActionCreators.undo());
+                }}
+                redo={() => {
+                  dispatch(ActionCreators.redo());
+                }}
+                clearWorld={() => {
+                  dispatch(fillWorld(Object.keys(tiles)[0]));
                 }}
               />
               <TilePalette
@@ -157,21 +169,13 @@ class App extends Component {
               deleteColumn={(pop) => {
                 dispatch(deleteColumn(pop));
               }}
-              clearWorld={() => {
-                dispatch(fillWorld(Object.keys(tiles)[0]));
-              }}
               createViewpoint={(location) => {
                 dispatch(createViewpoint(location));
               }}
               editViewpoint={(viewpointID) => {
                 dispatch(openViewpointEditor(viewpointID));
               }}
-              undo={() => {
-                dispatch(ActionCreators.undo());
-              }}
-              redo={() => {
-                dispatch(ActionCreators.redo());
-              }}
+              viewpoints={viewpoints.present}
               tiles={tiles}
               world={world.present}
             />}

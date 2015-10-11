@@ -37,12 +37,14 @@ export default class InteractiveDialogEditor extends Component {
       return (
         <div className={styles.lineEditor}>
           <input
+            className={styles.lineInput}
             onChange={(e) => {
               editChoiceText(i, e.target.value);
             }}
             value={choice.text}
           />
           <select
+            className={styles.choiceSelect}
             value={choice.connectsTo}
             onChange={(e) => {
               connectChoice(i, e.target.value);
@@ -51,6 +53,7 @@ export default class InteractiveDialogEditor extends Component {
             { connectOptions }
           </select>
           <button
+            className={styles.deleteButton}
             onClick={deleteChoice.bind(this, i)}
           >
             Delete

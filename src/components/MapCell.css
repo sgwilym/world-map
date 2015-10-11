@@ -34,8 +34,13 @@
 .inspectViewpoint {
   composes: decal;
   background-image: url('../icons/viewpoint-inspect.png');
-  width: 50%;
-  height: 50%;
+  width: 40%;
+  height: 40%;
   margin: auto;
   top: 0; left: 0; bottom: 0; right: 0;
+  transition: all 100ms;
+}
+
+.inspectViewpoint:hover {
+  transform: scale(1.2);
 }

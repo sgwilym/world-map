@@ -1,0 +1,9 @@
+.roundElement {
+  border-radius: 50%;
+}
+
+.smallRoundElement {
+  composes: roundElement;
+  width: 30px;
+  height: 30px;
+}

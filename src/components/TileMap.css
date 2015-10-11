@@ -12,40 +12,27 @@
   padding: 0;
 }
 
-.addButton {
-  color: rgb(144, 144, 144);
-  background-color: rgb(236, 236, 236);
-  font-size: 2em;
-  border: none;
+.edgeButton {
+  composes: hugeText from '../styles/type.css';
   width: 100%;
   min-width: 50px;
   height: 100%;
   min-height: 50px;
   padding: 0;
-  margin: 0;
-  cursor: pointer;
-  user-select: none;
-  transition: all 100ms;
 }
 
-.addButton:hover {
-  color: rgb(25, 133, 84);
-  background-color: rgb(115, 222, 168);
+.addButton {
+  composes: edgeButton;
+  composes: lightGreyButton greenOnHover from '../styles/buttons.css';
 }
 
-.addButton:focus, .cornerButton:focus {
+.cornerButton:focus {
   outline: 0;
 }
 
 .deleteButton {
-  composes: addButton;
-  color: white;
-  background: rgb(242, 80, 58);
-}
-
-.deleteButton:hover, .clearButton:hover {
-  color: white;
-  background: rgb(242, 80, 58);
+  composes: edgeButton;
+  composes: redButton from '../styles/buttons.css';
 }
 
 .cornerButton {

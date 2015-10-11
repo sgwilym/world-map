@@ -9,7 +9,7 @@ export default class MapCell extends Component {
 
     this.state = {
       mouseIsOver: false
-    }
+    };
   }
 
   render() {
@@ -27,7 +27,7 @@ export default class MapCell extends Component {
         height={tileSize}
         onMouseOver={(e) => {
           if (painting && !dragging) {
-            changeCell([location.y, location.x], selectedTile)
+            changeCell([location.y, location.x], selectedTile);
           }
         }}
         onMouseEnter={(e) => {
@@ -38,12 +38,12 @@ export default class MapCell extends Component {
         }}
         onMouseDown={(e) => {
           if (!dragging) {
-            changeCell([location.y, location.x], selectedTile)
+            changeCell([location.y, location.x], selectedTile);
           }
         }}
         onClick={() => {
           if (!dragging) {
-            changeCell([location.y, location.x], selectedTile)
+            changeCell([location.y, location.x], selectedTile);
           }
         }}
       >

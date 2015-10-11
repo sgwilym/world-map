@@ -1,0 +1,18 @@
+.selectBase {
+  composes: monospacedType from './type.css';
+  border: none;
+  cursor: pointer;
+}
+
+.selectBase:focus {
+  outline: none;
+}
+
+.inputBase {
+  composes: monospacedType from '../styles/type.css';
+  border: none;
+}
+
+.inputBase:focus {
+  outline: none;
+}

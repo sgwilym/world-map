@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import { DEFAULT_VIEWPOINT_SCENE } from '../ViewpointState';
 
+import styles from './DisplaySceneSelection.css';
+
 export default class DisplaySceneSelection extends Component {
   render() {
 
@@ -17,7 +19,7 @@ export default class DisplaySceneSelection extends Component {
             key={sceneID}
             value={sceneID}
           >
-            After { scenes[sceneID].name }
+            After '{ scenes[sceneID].name }' has been seen
           </option>
         }
       );
@@ -54,11 +56,13 @@ export default class DisplaySceneSelection extends Component {
       shownAfterValue = 'none';
     }
 
+    console.log(styles);
 
     return (
-      <div>
-        <p>Display this scene:</p>
+      <div className={styles.root}>
+        <p className={styles.label}>Shown:</p>
         <select
+          className={styles.select}
           value={shownAfterValue}
           onChange={(e) => {
             if (e.target.value !== 'none') {

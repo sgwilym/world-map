@@ -1,0 +1,38 @@
+.root {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+}
+
+.button {
+  composes: smallText from '../styles/buttons.css';
+  composes: lightGreyButton from '../styles/buttons.css';
+  margin: 0 0 .5em 0;
+  flex: 1 0 auto;
+}
+
+.negativeButton {
+  composes: button;
+  composes: redOnHover from '../styles/buttons.css';
+}
+
+.positiveButton {
+  composes: button;
+  composes: greenOnHover from '../styles/buttons.css';
+}
+
+.hints {
+  composes: monospacedType smallText from '../styles/type.css';
+  composes: greyColor lightGreyBackground from '../styles/colors.css';
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: .5em;
+}
+
+.hints p {
+  margin: 0;
+}

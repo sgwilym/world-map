@@ -6,11 +6,15 @@
 
 .dialogChoice {
   display: flex;
-  width: 20em;
+  width: 40em;
 }
 
 .radioInput {
   display: none;
+}
+
+.controls {
+  flex: 0 0 auto;
 }
 
 .radioInput:checked+label {
@@ -27,4 +31,8 @@
   padding: .5em;
   cursor: pointer;
   transition: all 150ms;
+}
+
+.deleteButton {
+  composes: greyButton redOnHover from '../styles/buttons.css';
 }

@@ -1,0 +1,23 @@
+.redBackground {
+  background-color: rgb(232, 93, 93);
+}
+
+.greenBackground {
+  background-color: rgb(54, 200, 99);
+}
+
+.blueBackground {
+  background-color: rgb(116, 194, 238);
+}
+
+.lightGreyBackground {
+  background-color: rgb(235, 235, 235);
+}
+
+.greyBackground {
+  background-color: rgb(194, 194, 194);
+}
+
+.greyColor {
+  color: rgb(126, 126, 126);
+}

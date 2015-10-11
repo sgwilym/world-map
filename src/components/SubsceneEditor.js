@@ -59,47 +59,51 @@ export default class SubsceneEditor extends Component {
           subsceneImage={subscene.image}
           changeImage={changeImage}
         />
-        <div className={styles.dialogChoice}>
-          <input
-            className={styles.radioInput}
-            id="staticDialog"
-            name="dialogType"
-            type="radio"
-            checked={subscene.dialog.type == STATIC_DIALOG}
-            value={STATIC_DIALOG}
-            onChange={this.handleDialogTypeChoice}
-          />
-          <label
-            className={styles.dialogChoiceLabel}
-            htmlFor="staticDialog"
-          >Static Dialog</label>
-          <input
-            className={styles.radioInput}
-            id="interactiveDialog"
-            name="dialogType"
-            type="radio"
-            checked={subscene.dialog.type == INTERACTIVE_DIALOG}
-            value={INTERACTIVE_DIALOG}
-            onChange={this.handleDialogTypeChoice}
-          />
-          <label
-            className={styles.dialogChoiceLabel}
-            htmlFor="interactiveDialog"
-          >Interactive Dialog</label>
+        <div className={styles.controls}>
+          <div className={styles.dialogChoice}>
+            <input
+              className={styles.radioInput}
+              id="staticDialog"
+              name="dialogType"
+              type="radio"
+              checked={subscene.dialog.type == STATIC_DIALOG}
+              value={STATIC_DIALOG}
+              onChange={this.handleDialogTypeChoice}
+            />
+            <label
+              className={styles.dialogChoiceLabel}
+              htmlFor="staticDialog"
+            >Static Dialog</label>
+            <input
+              className={styles.radioInput}
+              id="interactiveDialog"
+              name="dialogType"
+              type="radio"
+              checked={subscene.dialog.type == INTERACTIVE_DIALOG}
+              value={INTERACTIVE_DIALOG}
+              onChange={this.handleDialogTypeChoice}
+            />
+            <label
+              className={styles.dialogChoiceLabel}
+              htmlFor="interactiveDialog"
+            >Interactive Dialog</label>
+          </div>
+
+          {dialogEditor}
+
+          <button
+            className={styles.deleteButton}
+            onClick={() => {
+              const canDelete = confirm('Are you sure you want to delete this subscene?');
+              if (canDelete) {
+                removeSelf();
+              }
+            }}
+          >
+            Delete this subscene
+          </button>
+
         </div>
-
-        {dialogEditor}
-
-        <button
-          onClick={() => {
-            const canDelete = confirm('Are you sure you want to delete this subscene?');
-            if (canDelete) {
-              removeSelf();
-            }
-          }}
-        >
-          Delete this subscene
-        </button>
       </div>
     );
   }

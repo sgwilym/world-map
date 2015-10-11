@@ -1,0 +1,15 @@
+.monospacedType {
+  font-family: 'Menlo', 'CourierNew', 'Courier', monospace;
+}
+
+.smallText {
+  font-size: 12px;
+}
+
+.bigText {
+  font-size: 16px;
+}
+
+.hugeText {
+  font-size: 24px;
+}

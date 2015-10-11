@@ -27,6 +27,7 @@ export default class StaticDialogEditor extends Component {
           className={styles.lineEditor}
         >
           <input
+            className={styles.lineInput}
             key={i}
             onChange={(e) => {
               editLine(i, e.target.value);
@@ -34,6 +35,7 @@ export default class StaticDialogEditor extends Component {
             value={line}
           />
           <button
+            className={styles.deleteButton}
             onClick={deleteLine.bind(this, i)}
           >
            Delete

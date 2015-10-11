@@ -6,11 +6,11 @@
 }
 
 .sceneSelect {
+  composes: lightGreyBackground from '../styles/colors.css';
   display: flex;
   flex-direction: column;
   width: 120px;
   align-items: flex-end;
-  background-color: rgb(242, 242, 242);
 }
 
 .viewpoint {
@@ -24,7 +24,7 @@
 }
 
 .titleCoord {
-  font-family: monospace;
+  composes: smallText monospacedType from '../styles/type.css';
   display: inline-block;
   padding: .4em .55em;
   text-align: center;
@@ -33,54 +33,37 @@
 
 .xCoord {
   composes: titleCoord;
+  composes: blueBackground from '../styles/colors.css';
   color: rgb(191, 242, 255);
-  background-color: rgb(85, 163, 244);
 }
 
 .yCoord {
   composes: titleCoord;
+  composes: redBackground from '../styles/colors.css';
   color: rgb(255, 203, 203);
-  background-color: rgb(236, 96, 96);
-}
-
-.button {
-  font-size: .9em;
-  color: rgb(255, 255, 255);
-  background-color: rgb(209, 209, 209);
-  border: none;
-  transition: all 100ms;
-  cursor: pointer;
-  margin: 0 0 1em 0;
 }
 
 .createSceneButton {
-  composes: button;
-}
-
-.createSceneButton:hover {
-  color: rgb(187, 255, 214);
-  background-color: rgb(2, 164, 72);
-}
-
-.createSceneButton:focus, .deleteViewpointButton:focus {
-  outline: none;
+  composes: addButton from '../styles/buttons.css';
+  flex: 0 0 auto;
+  margin: 0 .3em .3em 0;
 }
 
 .deleteViewpointButton {
-  composes: button;
+  composes: greyButton redOnHover from '../styles/buttons.css';
   margin: auto 0 0 0;
 }
 
-.deleteViewpointButton:hover {
-  color: rgb(255, 215, 193);
-  background-color: rgb(255, 73, 73);
-}
-
 .sceneButton {
+  composes: bigText monospacedType from '../styles/type.css';
+  text-align: right;
+  border-radius: .5em 0 0 .5em;
   padding: .5em;
   background-color: rgb(228, 228, 228);
   margin: 0 0 1em 1em;
   cursor: pointer;
+  transition: 100ms all;
+  max-width: calc(100% - 2em);
 }
 
 .selectedSceneButton {
@@ -89,12 +72,15 @@
 }
 
 .closeButton {
+  composes: redButton from '../styles/buttons.css';
   width: 4em;
   height: 4em;
-  color: rgb(255, 183, 173);
-  background: rgb(238, 92, 52);
-  border: none;
   position: absolute;
   top: 0; right: 0;
-  font-family: monospace;
+}
+
+.noScenes {
+  composes: greyColor from '../styles/colors.css';
+  composes: smallText monospacedType from '../styles/type.css';
+  margin: 0 .7em 1em 0;
 }

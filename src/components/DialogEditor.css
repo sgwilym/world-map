@@ -1,5 +1,5 @@
 .dialogEditor {
-  width: 20em;
+  width: 40em;
   display: flex;
   flex-direction: column;
   margin: 0 0 1em 0;
@@ -14,37 +14,26 @@
   border-bottom: none;
 }
 
-.lineEditor input {
-  padding: .4em;
+.lineInput {
+  composes: inputBase from '../styles/inputs.css';
   flex: 1 0 auto;
-  display: block;
-  border: none;
+  padding: .5em;
 }
 
-.lineEditor button {
-  color: rgb(113, 113, 113);
-  cursor: pointer;
-  border: none;
-  background: rgb(232, 232, 232);
-}
-
-.lineEditor select {
-  border: none;
-}
-
-.lineEditor *:focus, .addlineButton:focus {
-  outline: none;
+.choiceSelect {
+  composes: selectBase from '../styles/inputs.css';
 }
 
 .addlineButton {
-  padding: .5em;
-  color: rgb(255, 255, 255);
-  background-color: rgb(190, 190, 190);
-  border: none;
+  composes: greyButton greenOnHover from '../styles/buttons.css';
   border-radius: 0 0 .5em .5em;
 }
 
+.deleteButton {
+  composes: lightGreyButton redOnHover from '../styles/buttons.css';
+}
+
 .connectSelect {
-  border: none;
   background-color: white;
+  composes: selectBase from '../styles/inputs.css';
 }

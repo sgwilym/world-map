@@ -78,16 +78,25 @@ export default class SceneEditor extends Component {
     return (
       <div className={styles.root}>
         <div className={styles.header}>
-          <input
-            className={styles.titleField}
-            value={scene.name}
-            placeholder={"Name this scene"}
-            onChange={this.editTitle}
-          />
+          <div>
+            <input
+              className={styles.titleField}
+              value={scene.name}
+              placeholder={"Name this scene"}
+              onChange={this.editTitle}
+            />
+            <button
+              className={styles.deleteButton}
+              onClick={this.deleteScene}
+            >
+              Delete this scene
+            </button>
+          </div>
 
           { Object.keys(scene.subscenes).length > 0 &&
             <p>Begins on&nbsp;
             <select
+              className={styles.subsceneSelection}
               value={scene.entrySubscene}
               onChange={(e) => {
                 changeEntrySubscene(e.target.value);
@@ -98,21 +107,16 @@ export default class SceneEditor extends Component {
             </p>
           }
 
-
-          <button
-            className={styles.deleteButton}
-            onClick={this.deleteScene}
-          >
-            Delete this scene
-          </button>
         </div>
         <div className={styles.subscenes}>
           { subsceneButtons }
+          { Object.keys(scene.subscenes).length == 0 &&
+            <p className={styles.noSubscenes}>No subscenes.</p>
+          }
           <button
             className={styles.addSubsceneButton}
             onClick={addNewSubscene}
           >
-            Add subscene
           </button>
         </div>
 

@@ -1,0 +1,62 @@
+.buttonBehaviour {
+  cursor: pointer;
+  user-select: none;
+}
+
+.buttonBase {
+  composes: buttonBehaviour;
+  composes: monospacedType from './type.css';
+  border: 0;
+  text-decoration: none;
+  text-align: center;
+  transition: all 100ms;
+  padding: .5em;
+  text-transform: uppercase;
+}
+
+.buttonBase:focus {
+  outline: 0;
+}
+
+.lightGreyButton {
+  composes: buttonBase;
+  composes: greyColor lightGreyBackground from '../styles/colors.css';
+}
+
+.greyButton {
+  composes: buttonBase;
+  composes: greyBackground from '../styles/colors.css';
+  color: white;
+}
+
+.redButton {
+  composes: buttonBase;
+  composes: redBackground from './colors.css';
+  color: white;
+}
+
+.greenOnHover {}
+.greenOnHover:hover {
+  color: white;
+  background-color: rgb(88, 200, 123);
+}
+
+.redOnHover {}
+.redOnHover:hover {
+  color: white;
+  background-color: rgb(227, 74, 74);
+}
+
+.addButton {
+  composes: hugeText from './type.css';
+  composes: greyButton greenOnHover;
+  composes: smallRoundElement from './layout.css';
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.addButton::before {
+  content: '+';
+}

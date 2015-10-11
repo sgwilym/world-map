@@ -1,18 +1,18 @@
 .root {
+  composes: lightGreyBackground from '../styles/colors.css';
   display: flex;
   padding: .5em;
   flex-wrap: wrap;
   width: calc(100px + .5em);
-  background-color: rgb(241, 241, 241);
   overflow: auto;
   flex: 1 1 auto;
 
 }
 
 .palette {
+  composes: buttonBehaviour from '../styles/buttons.css';
   width: 50px;
   height: 50px;
-  cursor: pointer;
   margin: 0 .5em .5em 0;
   flex: 0 0 auto;
   background-size: cover;

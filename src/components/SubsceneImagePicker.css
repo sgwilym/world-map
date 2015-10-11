@@ -3,10 +3,10 @@
   flex-direction: column;
   align-items: flex-start;
   margin: 0 0 1.5em 0;
+  flex: 1 1 auto;
 }
 
 .clickToPick {
-  height: 120px;
   cursor: pointer;
   border: 2px solid rgb(203, 203, 203);
 }
@@ -21,10 +21,10 @@
 }
 
 .unpicked {
+  composes: greyBackground from '../styles/colors.css';
   composes: clickToPick;
   display: flex;
   color: white;
-  background: rgb(177, 177, 177);
   align-items: center;
   justify-content: center;
   padding: 0 1em;
