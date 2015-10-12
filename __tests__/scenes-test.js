@@ -13,31 +13,31 @@ const freshSubScene = {
       choices: []
     }
   }
-}
+};;
 
 describe('newID', function() {
 
   it('creates a new ID key from an empty object', function() {
     const scenes = {};
     expect(newID(scenes)).toEqual(0);
-  })
+  });
 
   it('create a new ID key from an object with IDs already', function() {
     const scenes = {
       0: {},
       1: {},
-    }
+    };
     expect(newID(scenes)).toEqual(2);
-  })
+  });
 
   it('creates a new ID from an object with non-sequential IDs', function() {
     const scenes = {
       0: {},
       1: {},
       3: {}
-    }
+    };
     expect(newID(scenes)).toEqual(2);
-  })
+  });
 
 });
 
@@ -51,8 +51,8 @@ describe('addNewScene', function() {
         name: 'New Scene',
         subscenes: {}
       }
-    }
-    expect(sceneUpdate.addNewScene()).toEqual(expected)
+    };
+    expect(sceneUpdate.addNewScene()).toEqual(expected);
   });
 
   it('add a new scene to an object with existing scenes', function() {
@@ -61,7 +61,7 @@ describe('addNewScene', function() {
         name: 'New Scene',
         subscenes: {}
       }
-    }
+    };
     const sceneUpdate = makeSceneUpdater(scenes);
     const expected = {
       0: {
@@ -74,7 +74,7 @@ describe('addNewScene', function() {
       }
     };
     expect(sceneUpdate.addNewScene()).toEqual(expected);
-  })
+  });
 
 });
 
@@ -94,21 +94,21 @@ describe('renameScene', function() {
       }
     };
     expect(updateScene.renameScene(1, 'The Scary One')).toEqual(expected);
-  })
-})
+  });
+});
 
 describe('removeScene', function() {
   it('removes a scene by a given ID', function() {
     const scenes = {
       0: { subscenes: {} },
       1: { subscenes: {} }
-    }
+    };
     const sceneUpdate = makeSceneUpdater(scenes);
     const expected = {
       0: { subscenes: {} }
-    }
+    };
     expect(sceneUpdate.removeScene(1)).toEqual(expected);
-  })
+  });
 });
 
 describe('addSubsceneToScene', function() {
@@ -116,17 +116,17 @@ describe('addSubsceneToScene', function() {
     const scenes = {
       0: { subscenes: {} },
       3: { subscenes: {} }
-    }
+    };
     const sceneUpdate = makeSceneUpdater(scenes);
     const expected = {
       0: { subscenes: {} },
       3: { subscenes: {
         0: freshSubScene
       }}
-    }
+    };
     expect(sceneUpdate.addNewSubsceneToScene(3)).toEqual(expected);
-  })
-})
+  });
+});
 
 describe('removeSubsceneFromScene', function() {
   it ('removes a subscene with given ID from a scene with given ID', function() {
@@ -135,14 +135,14 @@ describe('removeSubsceneFromScene', function() {
       3: { subscenes: {
         0: freshSubScene
       }}
-    }
+    };
     const sceneUpdate = makeSceneUpdater(scenes);
     const expected = {
       0: { subscenes: {} },
       3: { subscenes: {} }
-    }
+    };
     expect(sceneUpdate.removeSubsceneFromScene(0, 3)).toEqual(expected);
-  })
+  });
 });
 
 describe('changeSceneSubsceneImage', function() {
@@ -153,7 +153,7 @@ describe('changeSceneSubsceneImage', function() {
           1: freshSubScene
         }
       }
-    }
+    };
     const sceneUpdate = makeSceneUpdater(scenes);
     const expected = {
       3: {
@@ -171,9 +171,9 @@ describe('changeSceneSubsceneImage', function() {
           }
         }
       }
-    }
+    };
     expect(sceneUpdate.changeSceneSubsceneImage(3, 1, 'myCoolImage')).toEqual(expected);
-  })
+  });
 });
 
 describe('changeSceneSubsceneDialogType', function() {
@@ -184,7 +184,7 @@ describe('changeSceneSubsceneDialogType', function() {
           2: freshSubScene
         }
       }
-    }
+    };
     const sceneUpdate = makeSceneUpdater(scenes);
     const expected = {
       5: {
@@ -202,9 +202,9 @@ describe('changeSceneSubsceneDialogType', function() {
           }
         }
       }
-    }
+    };
     expect(sceneUpdate.changeSceneSubsceneDialogType(5, 2, INTERACTIVE_DIALOG)).toEqual(expected);
-  })
+  });
 });
 
 describe('connectSceneSubsceneDialog', function() {
@@ -235,7 +235,7 @@ describe('connectSceneSubsceneDialog', function() {
       }
     };
     expect(sceneUpdate.connectSceneSubsceneDialog(6, 1, 2)).toEqual(expected);
-  })
+  });
 });
 
 describe('addLineToSceneSubsceneDialog', function() {
@@ -266,8 +266,8 @@ describe('addLineToSceneSubsceneDialog', function() {
       }
     };
     expect(sceneUpdate.addLineToSceneSubsceneDialog(3, 0)).toEqual(expected);
-  })
-})
+  });
+});
 
 describe('editLineForSceneSubsceneDialog', function() {
   it('edits a line at a given index for the dialog of a subscen of a given ID for a scene of a given ID', function() {
@@ -305,7 +305,7 @@ describe('editLineForSceneSubsceneDialog', function() {
           }
         }
       }
-    }
+    };
     expect(updateScene.editLineForSceneSubsceneDialog(7, 1, 2, 'Oh, all right then.')).toEqual(expected);
   });
 });
@@ -348,7 +348,7 @@ describe('deleteLineForSceneSubsceneDialog', function() {
       }
     };
     expect(updateScene.deleteLineForSceneSubsceneDialog(7, 1, 0)).toEqual(expected);
-  })
+  });
 });
 
 describe('addSceneSubsceneDialogChoice', function() {
@@ -392,7 +392,7 @@ describe('addSceneSubsceneDialogChoice', function() {
       }
     };
     expect(updateScene.addSceneSubsceneDialogChoice(0, 1)).toEqual(expected);
-  })
+  });
 });
 
 describe('editSceneSubsceneDialogChoiceText', function() {

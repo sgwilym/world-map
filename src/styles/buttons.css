@@ -47,6 +47,12 @@
   background-color: rgb(227, 74, 74);
 }
 
+.blueOnHover {}
+.blueOnHover:hover {
+  color: white;
+  background-color: rgb(116, 194, 238);
+}
+
 .addButton {
   composes: hugeText from './type.css';
   composes: greyButton greenOnHover;

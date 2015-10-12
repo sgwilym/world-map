@@ -1,0 +1,33 @@
+.root {
+  padding: 1em;
+}
+
+.title {
+  composes: monospacedType bigText from '../styles/type.css';
+}
+
+.settingRow {
+  border-bottom: 1px solid rgb(224, 224, 224);
+  padding: 0 0 .5em 0;
+}
+
+.priorityControls {
+  display: flex;
+  flex-direction: column;
+}
+
+.priorityButton {
+  composes: lightGreyButton blueOnHover from '../styles/buttons.css';
+  display: block;
+  margin: 0;
+}
+
+.sceneName {
+  composes: monospacedType smallText from '../styles/type.css';
+  padding: .5em;
+}
+
+.select {
+  composes: selectBase from '../styles/inputs.css';
+  composes: lightGreyBackground from '../styles/colors.css';
+}

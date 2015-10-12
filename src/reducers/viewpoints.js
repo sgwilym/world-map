@@ -10,10 +10,10 @@ export default function viewpoints(state = {}, action) {
     return update.connectSceneToViewpoint(action.viewpointID, action.sceneID);
   case ActionTypes.DISCONNECT_SCENE_FROM_VIEWPOINT:
     return update.disconnectSceneFromViewpoint(action.viewpointID, action.sceneID);
-  case ActionTypes.SET_VIEWPOINT_SCENE_TO_DISPLAY:
-    return update.setSceneToDisplay(action.viewpointID, action.seenSceneIDOrConstant, action.sceneToDisplayID);
-  case ActionTypes.REMOVE_VIEWPOINT_SCENE_TO_DISPLAY:
-    return update.removeSceneToDisplay(action.viewpointID, action.seenSceneIDOrConstant);
+  case ActionTypes.EDIT_DISPLAY_SETTING:
+    return update.editDisplaySetting(action.viewpointID, action.sceneIndex, action.seenSubsceneIndexOrConstant);
+  case ActionTypes.REORDER_VIEWPOINT_SCENES:
+    return update.reorderViewpointScenes(action.viewpointID, action.sceneIndex, action.newSceneIndex);
   case ActionTypes.DELETE_VIEWPOINT:
     return update.deleteViewpoint(action.viewpointID);
   case ActionTypes.LOAD_VIEWPOINTS:

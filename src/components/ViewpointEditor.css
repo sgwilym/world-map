@@ -20,7 +20,7 @@
   background-color: blue;
   display: flex;
   align-items: flex-start;
-  margin: 0 0 1em 0;
+  margin: 0;
 }
 
 .titleCoord {
@@ -52,6 +52,11 @@
 .deleteViewpointButton {
   composes: greyButton redOnHover from '../styles/buttons.css';
   margin: auto 0 0 0;
+}
+
+.editDisplaySettingsButton {
+  composes: greyButton blueOnHover from '../styles/buttons.css';
+  margin: 0 0 1em 0;
 }
 
 .sceneButton {

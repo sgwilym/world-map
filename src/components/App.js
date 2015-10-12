@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { ActionCreators } from 'redux-undo';
 import { selectTile, changeTileSize, openViewpointEditor, closeViewpointEditor} from '../actions/interface';
 import { addColumn, addRow, deleteColumn, deleteRow, changeCell, loadWorld, fillWorld } from '../actions/world';
-import { createViewpoint, connectSceneToViewpoint, setSceneToDisplayOnViewpoint, removeSceneToDisplayOnViewpoint, deleteViewpoint, loadViewpoints } from '../actions/viewpoints';
+import { createViewpoint, connectSceneToViewpoint, editDisplaySetting, reorderViewpointScenes, deleteViewpoint, loadViewpoints } from '../actions/viewpoints';
 import { createScene, renameScene, deleteScene, addNewSubsceneToScene, changeSceneEntrySubscene, removeSubsceneFromScene, changeSceneSubsceneImage, changeSceneSubsceneDialogType, connectSceneSubsceneDialog, addLineToSceneSubsceneDialog, editLineForSceneSubsceneDialog, deleteLineForSceneSubsceneDialog, addSceneSubsceneDialogChoice, editSceneSubsceneDialogChoiceText, connectSceneSubsceneDialogChoice, deleteSceneSubsceneDialogChoice } from '../actions/scenes';
 import { createSceneAndConnectToViewpoint, deleteSceneAndDisconnectFromViewpoint, deleteViewpointAndCloseViewpointEditor, changeViewpointDisplaySettings, loadAppData } from '../actions/multiple';
 
@@ -185,12 +185,12 @@ class App extends Component {
           dispatch(changeSceneEntrySubscene(sceneID, subsceneID));
         }}
 
-        changeDisplaySettings={(previousSeenSceneIDorConstant, seenSceneIDOrConstant, sceneToDisplayID) => {
-          dispatch(changeViewpointDisplaySettings(editingViewpoint, previousSeenSceneIDorConstant, seenSceneIDOrConstant, sceneToDisplayID));
+        editDisplaySetting={(sceneIndex, seenSubsceneIndexOrConstant) => {
+          dispatch(editDisplaySetting(editingViewpoint, sceneIndex, seenSubsceneIndexOrConstant));
         }}
 
-        removeSceneToDisplay={(seenSceneIDOrConstant) => {
-          dispatch(removeSceneToDisplayOnViewpoint(editingViewpoint, seenSceneIDOrConstant));
+        reorderScenes={(sceneIndex, newSceneIndex) => {
+          dispatch(reorderViewpointScenes(editingViewpoint, sceneIndex, newSceneIndex));
         }}
       />;
     }

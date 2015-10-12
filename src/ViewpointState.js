@@ -2,6 +2,7 @@ import update from 'react-addons-update';
 import { newID } from './SceneState';
 
 export const DEFAULT_VIEWPOINT_SCENE = 'DEFAULT_VIEWPOINT_SCENE';
+export const NO_VIEWPOINT_DISPLAY_SETTING = 'NO_VIEWPOINT_DISPLAY_SETTING';
 
 export default function(viewpointsState) {
 
@@ -12,34 +13,31 @@ export default function(viewpointsState) {
         [newID(viewpointsState)]: {
           $set: {
             location,
-            scenes: [],
-            displayScene: {}
+            scenes: []
           }
         }
       });
     },
 
     connectSceneToViewpoint(viewpointID, sceneID) {
-      const nextState = update(viewpointsState, {
+      const setting = viewpointsState[viewpointID].scenes.length > 0 ? NO_VIEWPOINT_DISPLAY_SETTING : DEFAULT_VIEWPOINT_SCENE;
+
+      return update(viewpointsState, {
         [viewpointID]: {
-          scenes: { $push: [sceneID] }
+          scenes: { $push: [{
+            id: sceneID,
+            displaySetting: setting
+          }] }
         }
       });
-      if (viewpointsState[viewpointID].scenes.length > 0) {
-        return nextState;
-      } else {
-        return update(nextState, {
-          [viewpointID]: {
-            displayScene: {
-              DEFAULT_VIEWPOINT_SCENE: { $set: sceneID }
-            }
-          }
-        });
-      }
     },
 
     disconnectSceneFromViewpoint(viewpointID, sceneID) {
-      const sceneIndex = viewpointsState[viewpointID].scenes.indexOf(sceneID);
+      const sceneIndex = viewpointsState[viewpointID].scenes.findIndex((scene) => {
+        return scene.id == sceneID;
+      });
+
+      console.log(sceneIndex);
       return update(viewpointsState, {
         [viewpointID]: {
           scenes: { $splice: [[sceneIndex, 1]] }
@@ -47,21 +45,29 @@ export default function(viewpointsState) {
       });
     },
 
-    setSceneToDisplay(viewpointID, seenSceneIDOrConstant, sceneToDisplayID) {
+    editDisplaySetting(viewpointID, sceneIndex, seenSubsceneIndexOrConstant) {
       return update(viewpointsState, {
         [viewpointID]: {
-          displayScene: {
-            [seenSceneIDOrConstant]: { $set: sceneToDisplayID }
+          scenes: {
+            [sceneIndex]: {
+              displaySetting: { $set: seenSubsceneIndexOrConstant }
+            }
           }
         }
       });
     },
 
-    removeSceneToDisplay(viewpointID, seenSceneIDOrConstant) {
-      var nextViewpointsState = Object.assign({}, viewpointsState);
+    reorderViewpointScenes(viewpointID, sceneIndex, newSceneIndex) {
+      var { scenes } = viewpointsState[viewpointID];
+      scenes.splice(newSceneIndex, 0, scenes.splice(sceneIndex, 1)[0]);
 
-        delete nextViewpointsState[viewpointID].displayScene[seenSceneIDOrConstant];
-      return nextViewpointsState;
+      console.log(scenes);
+
+      return update(viewpointsState, {
+        [viewpointID]: {
+          scenes: { $set: scenes }
+        }
+      });
     },
 
     deleteViewpoint(viewpointID) {
