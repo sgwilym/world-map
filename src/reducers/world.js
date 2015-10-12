@@ -1,7 +1,13 @@
 import update from 'react-addons-update';
 import * as ActionTypes from '../actions/world';
 
-const initialState = [[0,0,0,0,0,0,0,0],['0','0','0','11','9','0','0',0],['0','34','11','23','28','9','0',0],['14','25','23','19','20','28','26','12'],['17','24','22','32','29','27','16','15'],['0','0','17','24','6','39','37',0],['0','0','0','0','0','0','0',0]];
+const initialState = [
+  [0,0,0,0,0],
+  [0,0,0,0,0],
+  [0,0,0,0,0],
+  [0,0,0,0,0],
+  [0,0,0,0,0]
+];
 
 export default function world(state = initialState, action) {
   switch (action.type) {
