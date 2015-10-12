@@ -25,14 +25,14 @@ export default class ZoomControl extends Component {
           className={styles.slider}
           onChange={this.handleChange}
           type="range"
-          min="25"
+          min="50"
           value={zoomLevel}
-          max="200"
+          max="350"
           step="1"
           orient="vertical"
         />
       </div>
-    )
+    );
   }
 
 }

@@ -4,6 +4,19 @@
   height: 100%;
 }
 
+.playButton {
+  composes: greyButton greenOnHover from '../styles/buttons.css';
+  flex: 0 0 auto;
+  margin: 0 0 .5em 0;
+}
+
+.editButton {
+  composes: greyButton greenOnHover from '../styles/buttons.css';
+  position: fixed;
+  top: 0; left: 0;
+  z-index: 10000;
+}
+
 .controls {
   display: flex;
   flex-direction: column;

@@ -1,17 +1,11 @@
 .root {
   overflow: hidden;
-  flex: 1 1 auto;
   width: 100%;
   height: 100%;
-  position: relative;
-}
-
-.canGrabRoot {
-  composes: root;
   cursor: grab;
 }
 
-.grabbingRoot {
+.rootGrabbing {
   composes: root;
   cursor: grabbing;
 }

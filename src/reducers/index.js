@@ -8,8 +8,6 @@ import { selectedTile, tileSize, editingViewpoint } from './interface';
 import viewpoints from './viewpoints';
 import scenes from './scenes';
 
-console.log(ifAction);
-
 export default combineReducers({
   world: undoable(world),
   tileSize,
