@@ -129,7 +129,7 @@ export default class GameMapViewer extends Component {
 
   render() {
 
-    const { world, tiles, changeTileSize, tileSize } = this.props;
+    const { world, tiles, changeTileSize, tileSize, beginScene } = this.props;
     const { dragging } = this.state;
 
     return (
@@ -145,6 +145,7 @@ export default class GameMapViewer extends Component {
           tiles={tiles}
           world={world}
           tileSize={tileSize}
+          beginScene={beginScene}
         />
       </div>
     );

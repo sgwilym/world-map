@@ -207,6 +207,8 @@ class App extends Component {
         tiles={tiles}
         tileSize={tileSize}
         world={world.present}
+        viewpoints={viewpoints.present}
+        scenes={scenes}
         changeTileSize={(tileSize) => {
           dispatch(changeTileSize(tileSize));
         }}

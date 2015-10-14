@@ -6,7 +6,7 @@ export default class GameMapCell extends Component {
 
   render() {
 
-    const { tile, tileSize } = this.props;
+    const { tile, tileSize, scene, beginScene } = this.props;
 
     return (
       <td
@@ -16,7 +16,13 @@ export default class GameMapCell extends Component {
         style={{
           backgroundImage: `url(${tile})`
         }}
-      ></td>
+      >
+        { beginScene &&
+          <button
+            onClick={beginScene}
+          >SCENE</button>
+        }
+      </td>
     );
   }
 
