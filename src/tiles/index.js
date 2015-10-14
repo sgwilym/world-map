@@ -4,8 +4,9 @@ const tilePaths = tileRequire.keys();
 
 var tiles = {};
 
-for (let i = 0; i < tilePaths.length; i++) {
-  tiles[i] = require(`${tilePaths[i]}`);
+for (let tilePath of tilePaths) {
+  const key = tilePath.replace('./', '').replace('.png', '');
+  tiles[key] = require(`${tilePath}`);
 }
 
 export default tiles;

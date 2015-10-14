@@ -14,7 +14,7 @@ import worldMapApp from './reducers';
 
 let initialState = {
   tileSize: 100,
-  selectedTile: 0,
+  selectedTile: 'TILE0000',
   viewpoints: {},
   scenes: {}
 };

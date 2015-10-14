@@ -1,12 +1,13 @@
 import update from 'react-addons-update';
 import * as ActionTypes from '../actions/world';
 
+const t = 'TILE0000';
 const initialState = [
-  [0,0,0,0,0],
-  [0,0,0,0,0],
-  [0,0,0,0,0],
-  [0,0,0,0,0],
-  [0,0,0,0,0]
+  [t,t,t,t,t],
+  [t,t,t,t,t],
+  [t,t,t,t,t],
+  [t,t,t,t,t],
+  [t,t,t,t,t]
 ];
 
 export default function world(state = initialState, action) {
@@ -15,7 +16,7 @@ export default function world(state = initialState, action) {
     var maxXValue = Math.max.apply(null, (state.map(row => {
       return row.length;
     })));
-    var arrayToAdd = [Array.from(new Array(maxXValue), () => 0)];
+    var arrayToAdd = [Array.from(new Array(maxXValue), () => t)];
 
     if (action.append) {
       return update(state, {
@@ -30,13 +31,13 @@ export default function world(state = initialState, action) {
     if (action.append) {
       return state.map((row) => {
         let newRow = row.slice();
-        newRow.push(0);
+        newRow.push(t);
         return newRow;
       });
     } else {
       return state.map((row) => {
         let newRow = row.slice();
-        newRow.unshift(0);
+        newRow.unshift(t);
         return newRow;
       });
     }
