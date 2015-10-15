@@ -74,7 +74,7 @@ export default function(sceneState) {
           }
         }
       });
-      if (sceneState[sceneID].subscenes.length > 0) {
+      if (Object.keys(sceneState[sceneID].subscenes).length > 0) {
         return nextState;
       } else {
         return update(nextState, {
@@ -86,8 +86,18 @@ export default function(sceneState) {
     },
 
     removeSubsceneFromScene(subsceneID, sceneID) {
+      // Make sure entry subscene exists
       var nextSceneState = Object.assign({}, sceneState);
       delete nextSceneState[sceneID].subscenes[subsceneID];
+
+      if (parseInt(sceneState[sceneID].entrySubscene) === parseInt(subsceneID)) {
+        let subsceneKeys = Object.keys(sceneState[sceneID].subscenes);
+        if (subsceneKeys.length > 0) {
+          nextSceneState[sceneID].entrySubscene = subsceneKeys[0];
+        } else {
+          nextSceneState[sceneID].entrySubscene = null;
+        }
+      }
       return nextSceneState;
     },
 
