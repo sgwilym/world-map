@@ -40,7 +40,7 @@ export default function(sceneState) {
       });
     },
 
-    changeSceneEntrySubscene(scenedID, subsceneID) {
+    changeSceneEntrySubscene(sceneID, subsceneID) {
       return update(sceneState, {
         [sceneID]: {
           entrySubscene: { $set: subsceneID }

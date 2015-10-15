@@ -35,7 +35,7 @@ export default function scenes(state = {}, action) {
   case ActionTypes.DELETE_SUBSCENE:
     return update.removeSubsceneFromScene(action.sceneID, action.subsceneID);
   case ActionTypes.CHANGE_SCENE_ENTRY_SUBSCENE:
-    return update.changeSceneSubsceneImage(action.sceneID, action.subsceneID);
+    return update.changeSceneEntrySubscene(action.sceneID, action.subsceneID);
   case ActionTypes.LOAD_SCENES:
     return action.loadedScenes;
   default:
