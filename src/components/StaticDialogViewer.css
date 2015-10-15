@@ -1,0 +1,21 @@
+.root {
+  color: white;
+  background: black;
+  padding: 1em;
+  cursor: pointer;
+  user-select: none;
+}
+
+.dialog {
+  composes: hugeText monospacedType from '../styles/type.css';
+}
+
+.hiddenCharacter {
+  opacity: 0;
+  transform: scale(0.1) rotate(45deg);
+}
+
+.visibleCharacter {
+  opacity: 1;
+  transition: 200ms all;
+}
