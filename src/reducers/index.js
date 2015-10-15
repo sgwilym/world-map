@@ -7,6 +7,7 @@ import world from './world';
 import { selectedTile, tileSize, editingViewpoint } from './interface';
 import viewpoints from './viewpoints';
 import scenes from './scenes';
+import game from './game';
 
 export default combineReducers({
   world: undoable(world),
@@ -16,5 +17,6 @@ export default combineReducers({
     filter: ifAction(CREATE_VIEWPOINT)
   }),
   editingViewpoint,
-  scenes
+  scenes,
+  game
 });

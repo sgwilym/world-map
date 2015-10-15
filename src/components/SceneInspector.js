@@ -20,7 +20,10 @@ export default class SceneInspector extends Component {
   }
 
   advance(connectsTo) {
-    const { endScene } = this.props;
+    const { endScene, seenSubscene, sceneID } = this.props;
+    const { displayingSubsceneID } = this.state;
+
+    seenSubscene([parseInt(sceneID), parseInt(displayingSubsceneID)]);
 
     if (connectsTo == CONNECT_END) {
       endScene();

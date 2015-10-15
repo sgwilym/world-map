@@ -8,6 +8,7 @@ import { addColumn, addRow, deleteColumn, deleteRow, changeCell, loadWorld, fill
 import { createViewpoint, connectSceneToViewpoint, editDisplaySetting, reorderViewpointScenes, deleteViewpoint, loadViewpoints } from '../actions/viewpoints';
 import { createScene, renameScene, deleteScene, addNewSubsceneToScene, changeSceneEntrySubscene, removeSubsceneFromScene, changeSceneSubsceneImage, changeSceneSubsceneDialogType, connectSceneSubsceneDialog, addLineToSceneSubsceneDialog, editLineForSceneSubsceneDialog, deleteLineForSceneSubsceneDialog, addSceneSubsceneDialogChoice, editSceneSubsceneDialogChoiceText, connectSceneSubsceneDialogChoice, deleteSceneSubsceneDialogChoice } from '../actions/scenes';
 import { createSceneAndConnectToViewpoint, deleteSceneAndDisconnectFromViewpoint, deleteViewpointAndCloseViewpointEditor, changeViewpointDisplaySettings, loadAppData } from '../actions/multiple';
+import { seenSubscene, resetSeenSubscenes } from '../actions/game';
 
 import { newID } from '../SceneState';
 import tiles from '../tiles';
@@ -31,7 +32,7 @@ class App extends Component {
   }
 
   render() {
-    const { dispatch, selectedTile, world, viewpoints, editingViewpoint, scenes, tileSize } = this.props;
+    const { dispatch, selectedTile, world, viewpoints, editingViewpoint, scenes, tileSize, game } = this.props;
     const { playing } = this.state;
 
     const mapEditor = createFragment(
@@ -196,11 +197,12 @@ class App extends Component {
     }
 
     const editor = editingViewpoint ? viewpointEditor : mapEditor;
-    const game = createFragment({
+    const gamePlayer = createFragment({
       resumeEdit: <button
         className={styles.editButton}
         onClick={() => {
           this.setState({playing: false});
+          dispatch(resetSeenSubscenes());
         }}
       >Edit</button>,
       game: <MapGame
@@ -212,12 +214,16 @@ class App extends Component {
         changeTileSize={(tileSize) => {
           dispatch(changeTileSize(tileSize));
         }}
+        seenSubscene={(sceneSubsceneIndex) => {
+          dispatch(seenSubscene(sceneSubsceneIndex));
+        }}
+        seenSubscenes={game.seenSubscenes}
       />
     });
 
     return (
       <div className={styles.root}>
-        { playing ? game : editor }
+        { playing ? gamePlayer : editor }
       </div>
     );
   }

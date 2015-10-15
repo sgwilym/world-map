@@ -16,10 +16,10 @@ export default class MapGame extends Component {
 
   render() {
 
-    const { world, tiles, viewpoints, scenes } = this.props;
+    const { world, tiles, viewpoints, scenes, seenSubscene, seenSubscenes } = this.props;
     const { displayingScene } = this.state;
 
-    const gameWorld = createGameWorld(world, viewpoints, scenes, [[0,0]]);
+    const gameWorld = createGameWorld(world, viewpoints, scenes, seenSubscenes);
 
     return (
       <div
@@ -35,10 +35,12 @@ export default class MapGame extends Component {
         {
           displayingScene !== null &&
           <SceneInspector
+            sceneID={displayingScene}
             scene={scenes[displayingScene]}
             endScene={() => {
               this.setState({displayingScene: null});
             }}
+            seenSubscene={seenSubscene}
           />
         }
       </div>
