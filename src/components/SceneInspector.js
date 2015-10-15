@@ -42,8 +42,11 @@ export default class SceneInspector extends Component {
       <div
         className={styles.root}
       >
-        <div>
+        <div
+          className={styles.content}
+        >
           <img
+            className={styles.image}
             src={SceneImages[displayingSubscene.image]}
           />
           {
