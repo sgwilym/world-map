@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import StaticDialogViewer from './StaticDialogViewer';
+import InteractiveDialogViewer from './InteractiveDialogViewer';
 
 import styles from './SceneInspector.css';
 import SceneImages from '../scene-images';
@@ -56,7 +57,12 @@ export default class SceneInspector extends Component {
               endDialog={this.advance.bind(this, displayingSubscene.dialog.elements.connectsTo)}
             />
             :
-            <p>InteractiveDialog</p>
+            <InteractiveDialogViewer
+              choices={displayingSubscene.dialog.elements.choices}
+              advance={(connectsTo) => {
+                this.advance(connectsTo);
+              }}
+            />
           }
         </div>
 
