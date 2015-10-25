@@ -7,6 +7,11 @@ export const CHANGE_CELL = 'CHANGE_CELL';
 export const FILL_WORLD = 'FILL_WORLD';
 export const LOAD_WORLD = 'LOAD_WORLD';
 
+export const DIRECTION_WEST = 'DIRECTION_WEST';
+export const DIRECTION_EAST = 'DIRECTION_EAST';
+export const DIRECTION_NORTH = 'DIRECTION_NORTH';
+export const DIRECTION_SOUTH = 'DIRECTION_SOUTH';
+
 // World actions
 export function addColumn(append) {
   return { type: ADD_COLUMN, append };

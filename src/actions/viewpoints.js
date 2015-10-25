@@ -6,6 +6,7 @@ export const EDIT_DISPLAY_SETTING = 'EDIT_DISPLAY_SETTING';
 export const REORDER_VIEWPOINT_SCENES = 'REORDER_VIEWPOINT_SCENES';
 export const DELETE_VIEWPOINT = 'DELETE_VIEWPOINT';
 export const LOAD_VIEWPOINTS = 'LOAD_VIEWPOINTS';
+export const TRANSLATE_VIEWPOINTS = 'TRANSLATE_VIEWPOINTS';
 
 // Viewpoint actions
 export function createViewpoint(location) {
@@ -35,3 +36,7 @@ export function deleteViewpoint(viewpointID) {
 export function loadViewpoints(loadedViewpoints) {
   return { type: LOAD_VIEWPOINTS, loadedViewpoints };
 }
+
+export function translateViewpoints(translationDirection) {
+  return { type: TRANSLATE_VIEWPOINTS, translationDirection };
+};

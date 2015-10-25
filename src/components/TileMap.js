@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
+import { DIRECTION_NORTH, DIRECTION_WEST, DIRECTION_EAST, DIRECTION_SOUTH } from '../actions/world';
 import MapCell from './MapCell';
 
 import styles from './TileMap.css';
@@ -44,7 +45,7 @@ export default class TileMap extends Component {
 
   render() {
 
-    const { world, tiles, tileSize, changeCell, selectedTile, addRow, addColumn, deleteRow, deleteColumn, dragging, createViewpoint, viewpoints, editViewpoint, clearWorld, undo, redo } = this.props;
+    const { world, tiles, tileSize, changeCell, selectedTile, dragging, createViewpoint, viewpoints, editViewpoint, clearWorld, undo, redo, expandMap, shrinkMap } = this.props;
     const { modifierActive } = this.state;
 
     const maxXValue = Math.max.apply(null, (world.map(row => {return row.length;})));
@@ -95,20 +96,15 @@ export default class TileMap extends Component {
 
     const buttonClassName = modifierActive ? styles.deleteButton : styles.addButton;
     const buttonLabel = modifierActive ? '—' : '+';
-    const columnButtonOnClick = (after) => {
-      if (modifierActive) {
-        deleteColumn(after);
-      } else {
-        addColumn(after);
-      }
+
+    const cardinalAction = (direction) => {
+      return modifierActive ? shrinkMap.bind(this, direction) : expandMap.bind(this, direction);
     };
-    const rowButtonOnClick = (after) => {
-      if (modifierActive) {
-        deleteRow(after);
-      } else {
-        addRow(after);
-      }
-    };
+
+    const northernAction = cardinalAction(DIRECTION_NORTH);
+    const southernAction = cardinalAction(DIRECTION_SOUTH);
+    const westernAction = cardinalAction(DIRECTION_WEST);
+    const easternAction = cardinalAction(DIRECTION_EAST);
 
     return (
       <div className={styles.root}>
@@ -122,7 +118,7 @@ export default class TileMap extends Component {
               <td>
                 <button
                   className={buttonClassName}
-                  onClick={rowButtonOnClick.bind(this, false)}
+                  onClick={northernAction}
                 >
                   { buttonLabel }
                 </button>
@@ -134,7 +130,7 @@ export default class TileMap extends Component {
               <td>
               <button
                 className={buttonClassName}
-                onClick={columnButtonOnClick.bind(this, false)}
+                onClick={westernAction}
               >
                 { buttonLabel }
               </button>
@@ -162,7 +158,7 @@ export default class TileMap extends Component {
               <td>
                 <button
                   className={buttonClassName}
-                  onClick={columnButtonOnClick.bind(this, true)}
+                  onClick={easternAction}
                 >
                   { buttonLabel }
                 </button>
@@ -173,7 +169,7 @@ export default class TileMap extends Component {
               <td>
                 <button
                   className={buttonClassName}
-                  onClick={rowButtonOnClick.bind(this, true)}
+                  onClick={southernAction}
                 >
                   { buttonLabel }
                 </button>

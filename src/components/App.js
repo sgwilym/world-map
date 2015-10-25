@@ -7,7 +7,7 @@ import { selectTile, changeTileSize, openViewpointEditor, closeViewpointEditor} 
 import { addColumn, addRow, deleteColumn, deleteRow, changeCell, loadWorld, fillWorld } from '../actions/world';
 import { createViewpoint, connectSceneToViewpoint, editDisplaySetting, reorderViewpointScenes, deleteViewpoint, loadViewpoints } from '../actions/viewpoints';
 import { createScene, renameScene, deleteScene, addNewSubsceneToScene, changeSceneEntrySubscene, removeSubsceneFromScene, changeSceneSubsceneImage, changeSceneSubsceneDialogType, connectSceneSubsceneDialog, addLineToSceneSubsceneDialog, editLineForSceneSubsceneDialog, deleteLineForSceneSubsceneDialog, addSceneSubsceneDialogChoice, editSceneSubsceneDialogChoiceText, connectSceneSubsceneDialogChoice, deleteSceneSubsceneDialogChoice } from '../actions/scenes';
-import { createSceneAndConnectToViewpoint, deleteSceneAndDisconnectFromViewpoint, deleteViewpointAndCloseViewpointEditor, changeViewpointDisplaySettings, loadAppData } from '../actions/multiple';
+import { createSceneAndConnectToViewpoint, deleteSceneAndDisconnectFromViewpoint, deleteViewpointAndCloseViewpointEditor, changeViewpointDisplaySettings, loadAppData, expandMap, shrinkMap } from '../actions/multiple';
 import { seenSubscene, resetSeenSubscenes } from '../actions/game';
 
 import { newID } from '../SceneState';
@@ -78,17 +78,11 @@ class App extends Component {
         changeCell={(twoDimensionalIndex, tileId) => {
           dispatch(changeCell(twoDimensionalIndex, tileId));
         }}
-        addRow={(append) => {
-          dispatch(addRow(append));
+        expandMap={(direction) => {
+          dispatch(expandMap(direction));
         }}
-        addColumn={(append) => {
-          dispatch(addColumn(append));
-        }}
-        deleteRow={(pop) => {
-          dispatch(deleteRow(pop));
-        }}
-        deleteColumn={(pop) => {
-          dispatch(deleteColumn(pop));
+        shrinkMap={(direction) => {
+          dispatch(shrinkMap(direction));
         }}
         createViewpoint={(location) => {
           dispatch(createViewpoint(location));

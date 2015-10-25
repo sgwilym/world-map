@@ -18,6 +18,8 @@ export default function viewpoints(state = {}, action) {
     return update.deleteViewpoint(action.viewpointID);
   case ActionTypes.LOAD_VIEWPOINTS:
     return action.loadedViewpoints;
+  case ActionTypes.TRANSLATE_VIEWPOINTS:
+    return update.translateViewpoints(action.translationDirection);
   default:
     return state;
   }

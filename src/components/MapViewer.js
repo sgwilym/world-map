@@ -126,7 +126,7 @@ export default class MapViewer extends Component {
 
   render() {
 
-    const { width, height, tiles, tileSize, world, changeCell, selectedTile, addColumn, addRow, deleteColumn, deleteRow, clearWorld, changeTileSize, createViewpoint, viewpoints, editViewpoint, undo, redo } = this.props;
+    const { width, height, tiles, tileSize, world, changeCell, selectedTile, expandMap, shrinkMap, clearWorld, changeTileSize, createViewpoint, viewpoints, editViewpoint, undo, redo } = this.props;
     const { canDrag, dragging } = this.state;
 
     var rootStyle = styles.root;
@@ -149,10 +149,8 @@ export default class MapViewer extends Component {
           world={world}
           changeCell={changeCell}
           selectedTile={selectedTile}
-          addColumn={addColumn}
-          addRow={addRow}
-          deleteRow={deleteRow}
-          deleteColumn={deleteColumn}
+          expandMap={expandMap}
+          shrinkMap={shrinkMap}
           dragging={canDrag}
           createViewpoint={createViewpoint}
           editViewpoint={editViewpoint}
